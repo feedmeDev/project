@@ -1,0 +1,31 @@
+<h1>Listing meals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date and time of meal</th>
+      <th>Still active</th>
+      <th>Deadline</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @meals.each do |meal| %>
+      <tr>
+        <td><%= meal.date_and_time_of_meal %></td>
+        <td><%= meal.still_active %></td>
+        <td><%= meal.deadline %></td>
+        <td><%= link_to 'Show', meal %></td>
+        <td><%= link_to 'Edit', edit_meal_path(meal) %></td>
+        <td><%= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Meal', new_meal_path %>

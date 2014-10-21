@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date_and_time_of_meal: 2014-10-21 13:56:15
+  still_active: false
+  deadline: 2014-10-21 13:56:15
+
+two:
+  date_and_time_of_meal: 2014-10-21 13:56:15
+  still_active: false
+  deadline: 2014-10-21 13:56:15

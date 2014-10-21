@@ -1,4 +1,8 @@
 Feedme::Application.routes.draw do
+  resources :component_meals
+
+  resources :meals
+
   resources :components
 
   resources :allergen_components
