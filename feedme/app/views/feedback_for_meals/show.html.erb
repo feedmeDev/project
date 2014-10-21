@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Meal:</strong>
+  <%= @feedback_for_meal.meal_id %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @feedback_for_meal.person_id %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @feedback_for_meal.body %>
+</p>
+
+<p>
+  <strong>Date of meal:</strong>
+  <%= @feedback_for_meal.date_of_meal %>
+</p>
+
+<%= link_to 'Edit', edit_feedback_for_meal_path(@feedback_for_meal) %> |
+<%= link_to 'Back', feedback_for_meals_path %>

@@ -1,0 +1,33 @@
+<%= form_for(@feedback_for_meal) do |f| %>
+  <% if @feedback_for_meal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@feedback_for_meal.errors.count, "error") %> prohibited this feedback_for_meal from being saved:</h2>
+
+      <ul>
+      <% @feedback_for_meal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :meal_id %><br>
+    <%= f.text_field :meal_id %>
+  </div>
+  <div class="field">
+    <%= f.label :person_id %><br>
+    <%= f.text_field :person_id %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </div>
+  <div class="field">
+    <%= f.label :date_of_meal %><br>
+    <%= f.datetime_select :date_of_meal %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

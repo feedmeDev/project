@@ -1,4 +1,6 @@
 Feedme::Application.routes.draw do
+  resources :feedback_for_meals
+
   resources :component_meals
 
   resources :meals

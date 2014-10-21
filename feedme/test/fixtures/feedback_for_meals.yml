@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  meal_id: 
+  person_id: 
+  body: MyText
+  date_of_meal: 2014-10-21 14:00:15
+
+two:
+  meal_id: 
+  person_id: 
+  body: MyText
+  date_of_meal: 2014-10-21 14:00:15
