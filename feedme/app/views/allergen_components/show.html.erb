@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Allergen warning:</strong>
+  <%= @allergen_component.allergen_warning_id %>
+</p>
+
+<p>
+  <strong>Component:</strong>
+  <%= @allergen_component.component_id %>
+</p>
+
+<%= link_to 'Edit', edit_allergen_component_path(@allergen_component) %> |
+<%= link_to 'Back', allergen_components_path %>
