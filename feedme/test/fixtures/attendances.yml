@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  meal_id: 
+  person_id: 
+  going: false
+
+two:
+  meal_id: 
+  person_id: 
+  going: false
