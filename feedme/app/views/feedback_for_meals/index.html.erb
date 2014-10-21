@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Meal</th>
-      <th>Person</th>
+      <th>Person belongs to</th>
       <th>Body</th>
       <th>Date of meal</th>
       <th></th>
@@ -16,8 +16,8 @@
   <tbody>
     <% @feedback_for_meals.each do |feedback_for_meal| %>
       <tr>
-        <td><%= feedback_for_meal.meal_id %></td>
-        <td><%= feedback_for_meal.person_id %></td>
+        <td><%= feedback_for_meal.meal %></td>
+        <td><%= feedback_for_meal.person_belongs_to %></td>
         <td><%= feedback_for_meal.body %></td>
         <td><%= feedback_for_meal.date_of_meal %></td>
         <td><%= link_to 'Show', feedback_for_meal %></td>

@@ -15,8 +15,8 @@
   <tbody>
     <% @attendances.each do |attendance| %>
       <tr>
-        <td><%= attendance.meal_id %></td>
-        <td><%= attendance.person_id %></td>
+        <td><%= attendance.meal %></td>
+        <td><%= attendance.person %></td>
         <td><%= attendance.going %></td>
         <td><%= link_to 'Show', attendance %></td>
         <td><%= link_to 'Edit', edit_attendance_path(attendance) %></td>

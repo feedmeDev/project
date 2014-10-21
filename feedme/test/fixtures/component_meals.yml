@@ -2,8 +2,8 @@
 
 one:
   meal_id: 
-  component_id: 
+  component_belongs_to: MyString
 
 two:
   meal_id: 
-  component_id: 
+  component_belongs_to: MyString

@@ -18,7 +18,7 @@ class ComponentMealsControllerTest < ActionController::TestCase
 
   test "should create component_meal" do
     assert_difference('ComponentMeal.count') do
-      post :create, component_meal: { component_id: @component_meal.component_id, meal_id: @component_meal.meal_id }
+      post :create, component_meal: { component_belongs_to: @component_meal.component_belongs_to, meal_id: @component_meal.meal_id }
     end
 
     assert_redirected_to component_meal_path(assigns(:component_meal))
@@ -35,7 +35,7 @@ class ComponentMealsControllerTest < ActionController::TestCase
   end
 
   test "should update component_meal" do
-    patch :update, id: @component_meal, component_meal: { component_id: @component_meal.component_id, meal_id: @component_meal.meal_id }
+    patch :update, id: @component_meal, component_meal: { component_belongs_to: @component_meal.component_belongs_to, meal_id: @component_meal.meal_id }
     assert_redirected_to component_meal_path(assigns(:component_meal))
   end
 

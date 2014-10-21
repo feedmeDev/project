@@ -18,7 +18,7 @@ class FeedbackForMealsControllerTest < ActionController::TestCase
 
   test "should create feedback_for_meal" do
     assert_difference('FeedbackForMeal.count') do
-      post :create, feedback_for_meal: { body: @feedback_for_meal.body, date_of_meal: @feedback_for_meal.date_of_meal, meal_id: @feedback_for_meal.meal_id, person_id: @feedback_for_meal.person_id }
+      post :create, feedback_for_meal: { body: @feedback_for_meal.body, date_of_meal: @feedback_for_meal.date_of_meal, meal_id: @feedback_for_meal.meal_id, person_belongs_to: @feedback_for_meal.person_belongs_to }
     end
 
     assert_redirected_to feedback_for_meal_path(assigns(:feedback_for_meal))
@@ -35,7 +35,7 @@ class FeedbackForMealsControllerTest < ActionController::TestCase
   end
 
   test "should update feedback_for_meal" do
-    patch :update, id: @feedback_for_meal, feedback_for_meal: { body: @feedback_for_meal.body, date_of_meal: @feedback_for_meal.date_of_meal, meal_id: @feedback_for_meal.meal_id, person_id: @feedback_for_meal.person_id }
+    patch :update, id: @feedback_for_meal, feedback_for_meal: { body: @feedback_for_meal.body, date_of_meal: @feedback_for_meal.date_of_meal, meal_id: @feedback_for_meal.meal_id, person_belongs_to: @feedback_for_meal.person_belongs_to }
     assert_redirected_to feedback_for_meal_path(assigns(:feedback_for_meal))
   end
 

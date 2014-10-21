@@ -69,6 +69,6 @@ class ComponentMealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def component_meal_params
-      params.require(:component_meal).permit(:meal_id, :component_id)
+      params.require(:component_meal).permit(:meal_id, :component_belongs_to)
     end
 end

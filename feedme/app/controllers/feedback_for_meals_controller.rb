@@ -69,6 +69,6 @@ class FeedbackForMealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feedback_for_meal_params
-      params.require(:feedback_for_meal).permit(:meal_id, :person_id, :body, :date_of_meal)
+      params.require(:feedback_for_meal).permit(:meal_id, :person_belongs_to, :body, :date_of_meal)
     end
 end

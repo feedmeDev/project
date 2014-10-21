@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Meal</th>
-      <th>Component</th>
+      <th>Component belongs to</th>
       <th></th>
       <th></th>
       <th></th>
@@ -14,8 +14,8 @@
   <tbody>
     <% @component_meals.each do |component_meal| %>
       <tr>
-        <td><%= component_meal.meal_id %></td>
-        <td><%= component_meal.component_id %></td>
+        <td><%= component_meal.meal %></td>
+        <td><%= component_meal.component_belongs_to %></td>
         <td><%= link_to 'Show', component_meal %></td>
         <td><%= link_to 'Edit', edit_component_meal_path(component_meal) %></td>
         <td><%= link_to 'Destroy', component_meal, method: :delete, data: { confirm: 'Are you sure?' } %></td>

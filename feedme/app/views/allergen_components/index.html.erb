@@ -14,8 +14,8 @@
   <tbody>
     <% @allergen_components.each do |allergen_component| %>
       <tr>
-        <td><%= allergen_component.allergen_warning_id %></td>
-        <td><%= allergen_component.component_id %></td>
+        <td><%= allergen_component.allergen_warning %></td>
+        <td><%= allergen_component.component %></td>
         <td><%= link_to 'Show', allergen_component %></td>
         <td><%= link_to 'Edit', edit_allergen_component_path(allergen_component) %></td>
         <td><%= link_to 'Destroy', allergen_component, method: :delete, data: { confirm: 'Are you sure?' } %></td>

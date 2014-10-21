@@ -2,12 +2,12 @@
 
 <p>
   <strong>Meal:</strong>
-  <%= @component_meal.meal_id %>
+  <%= @component_meal.meal %>
 </p>
 
 <p>
-  <strong>Component:</strong>
-  <%= @component_meal.component_id %>
+  <strong>Component belongs to:</strong>
+  <%= @component_meal.component_belongs_to %>
 </p>
 
 <%= link_to 'Edit', edit_component_meal_path(@component_meal) %> |

@@ -14,8 +14,8 @@
   <tbody>
     <% @indication_for_meals.each do |indication_for_meal| %>
       <tr>
-        <td><%= indication_for_meal.component_id %></td>
-        <td><%= indication_for_meal.attendance_id %></td>
+        <td><%= indication_for_meal.component %></td>
+        <td><%= indication_for_meal.attendance %></td>
         <td><%= link_to 'Show', indication_for_meal %></td>
         <td><%= link_to 'Edit', edit_indication_for_meal_path(indication_for_meal) %></td>
         <td><%= link_to 'Destroy', indication_for_meal, method: :delete, data: { confirm: 'Are you sure?' } %></td>

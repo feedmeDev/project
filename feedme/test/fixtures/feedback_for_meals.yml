@@ -2,12 +2,12 @@
 
 one:
   meal_id: 
-  person_id: 
+  person_belongs_to: MyString
   body: MyText
-  date_of_meal: 2014-10-21 14:00:15
+  date_of_meal: 2014-10-21 14:29:01
 
 two:
   meal_id: 
-  person_id: 
+  person_belongs_to: MyString
   body: MyText
-  date_of_meal: 2014-10-21 14:00:15
+  date_of_meal: 2014-10-21 14:29:01
