@@ -1,0 +1,27 @@
+<h1>Listing allergen_warnings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Warning content</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @allergen_warnings.each do |allergen_warning| %>
+      <tr>
+        <td><%= allergen_warning.warning_content %></td>
+        <td><%= link_to 'Show', allergen_warning %></td>
+        <td><%= link_to 'Edit', edit_allergen_warning_path(allergen_warning) %></td>
+        <td><%= link_to 'Destroy', allergen_warning, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Allergen warning', new_allergen_warning_path %>

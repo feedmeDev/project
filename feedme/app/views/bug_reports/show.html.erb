@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Platform:</strong>
+  <%= @bug_report.platform %>
+</p>
+
+<p>
+  <strong>Report:</strong>
+  <%= @bug_report.report %>
+</p>
+
+<%= link_to 'Edit', edit_bug_report_path(@bug_report) %> |
+<%= link_to 'Back', bug_reports_path %>

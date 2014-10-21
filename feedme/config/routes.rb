@@ -1,4 +1,8 @@
 Feedme::Application.routes.draw do
+  resources :allergen_warnings
+
+  resources :bug_reports
+
   resources :people
 
   # The priority is based upon order of creation: first created -> highest priority.
