@@ -18,7 +18,7 @@ class AllergenWarningsControllerTest < ActionController::TestCase
 
   test "should create allergen_warning" do
     assert_difference('AllergenWarning.count') do
-      post :create, allergen_warning: { warning_content: @allergen_warning.warning_content }
+      post :create, allergen_warning: { warning_content: @allergen_warning.warning_content, warning_title: @allergen_warning.warning_title }
     end
 
     assert_redirected_to allergen_warning_path(assigns(:allergen_warning))
@@ -35,7 +35,7 @@ class AllergenWarningsControllerTest < ActionController::TestCase
   end
 
   test "should update allergen_warning" do
-    patch :update, id: @allergen_warning, allergen_warning: { warning_content: @allergen_warning.warning_content }
+    patch :update, id: @allergen_warning, allergen_warning: { warning_content: @allergen_warning.warning_content, warning_title: @allergen_warning.warning_title }
     assert_redirected_to allergen_warning_path(assigns(:allergen_warning))
   end
 

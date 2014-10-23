@@ -5,5 +5,10 @@
   <%= @allergen_warning.warning_content %>
 </p>
 
+<p>
+  <strong>Warning title:</strong>
+  <%= @allergen_warning.warning_title %>
+</p>
+
 <%= link_to 'Edit', edit_allergen_warning_path(@allergen_warning) %> |
 <%= link_to 'Back', allergen_warnings_path %>

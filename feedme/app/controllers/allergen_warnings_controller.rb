@@ -1,24 +1,22 @@
 class AllergenWarningsController < ApplicationController
   before_action :set_allergen_warning, only: [:show, :edit, :update, :destroy]
+  before_filter :set_headers
+
 
   # GET /allergen_warnings
   # GET /allergen_warnings.json
   def index
     @allergen_warnings = AllergenWarning.all
+
+    render json: @allergen_warnings
   end
 
   # GET /allergen_warnings/1
   # GET /allergen_warnings/1.json
   def show
-  end
+    @allergen_warning = AllergenWarning.find(params[:id])
 
-  # GET /allergen_warnings/new
-  def new
-    @allergen_warning = AllergenWarning.new
-  end
-
-  # GET /allergen_warnings/1/edit
-  def edit
+    render json: @allergen_warning
   end
 
   # POST /allergen_warnings
@@ -69,6 +67,10 @@ class AllergenWarningsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def allergen_warning_params
-      params.require(:allergen_warning).permit(:warning_content)
+      params.require(:allergen_warning).permit(:warning_content, :warning_title)
+    end
+
+    def set_headers
+      headers['Access-Controll-Allow-Origin'] = '*'
     end
 end

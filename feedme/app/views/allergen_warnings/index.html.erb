@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Warning content</th>
+      <th>Warning title</th>
       <th></th>
       <th></th>
       <th></th>
@@ -14,6 +15,7 @@
     <% @allergen_warnings.each do |allergen_warning| %>
       <tr>
         <td><%= allergen_warning.warning_content %></td>
+        <td><%= allergen_warning.warning_title %></td>
         <td><%= link_to 'Show', allergen_warning %></td>
         <td><%= link_to 'Edit', edit_allergen_warning_path(allergen_warning) %></td>
         <td><%= link_to 'Destroy', allergen_warning, method: :delete, data: { confirm: 'Are you sure?' } %></td>

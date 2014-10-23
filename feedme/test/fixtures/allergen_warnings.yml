@@ -2,6 +2,8 @@
 
 one:
   warning_content: MyString
+  warning_title: MyString
 
 two:
   warning_content: MyString
+  warning_title: MyString

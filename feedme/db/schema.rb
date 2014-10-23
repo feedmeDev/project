@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141021013142) do
+ActiveRecord::Schema.define(version: 20141023020123) do
 
   create_table "allergen_components", force: true do |t|
     t.integer  "allergen_warning_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20141021013142) do
 
   create_table "allergen_warnings", force: true do |t|
     t.string   "warning_content"
+    t.string   "warning_title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
