@@ -1,7 +1,7 @@
 class AllergenWarningsController < ApplicationController
   before_action :set_allergen_warning, only: [:show, :edit, :update, :destroy]
   before_filter :set_headers
-
+  skip_before_filter :verify_authenticity_token
 
   # GET /allergen_warnings
   # GET /allergen_warnings.json
