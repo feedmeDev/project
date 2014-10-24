@@ -7,19 +7,52 @@ class PeopleController < ApplicationController
     @people = Person.all
   end
 
+  # GET /staff
+  # GET /staff.json
+  def index_staff
+    people = Person.all
+
+    @staff = []
+
+    people.each do | p |
+      if p.staff
+        @staff.push(p)
+      end
+    end
+    
+    render json: @staff
+  end
+
+  # GET /students
+  # GET /students.json
+  def index_students
+    people = Person.all
+
+    @students = []
+
+    people.each do | p |
+      if !p.staff
+        @students.push(p)
+      end
+    end
+
+    render json: @students
+  end
+
   # GET /people/1
   # GET /people/1.json
   def show
+    @person = Person.find(params[:id])
   end
 
   # GET /people/new
-  def new
-    @person = Person.new
-  end
+#  def new
+#    @person = Person.new
+#  end
 
   # GET /people/1/edit
-  def edit
-  end
+#  def edit
+#  end
 
   # POST /people
   # POST /people.json
