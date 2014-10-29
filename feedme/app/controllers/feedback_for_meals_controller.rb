@@ -5,21 +5,32 @@ class FeedbackForMealsController < ApplicationController
   # GET /feedback_for_meals.json
   def index
     @feedback_for_meals = FeedbackForMeal.all
+
+    render json: @feedback_for_meals
   end
 
   # GET /feedback_for_meals/1
   # GET /feedback_for_meals/1.json
   def show
+    @feedback = FeedbackForMeal.find(params[:id])
+
+    render json: @feedback
   end
 
-  # GET /feedback_for_meals/new
-  def new
-    @feedback_for_meal = FeedbackForMeal.new
+  def get_all_for_meal
+    @feedback_list = FeedbackForMeal.where("meal_id=?", params[:meal_id]);
+  
+    render json: @feedback_list
   end
 
-  # GET /feedback_for_meals/1/edit
-  def edit
-  end
+#  # GET /feedback_for_meals/new
+#  def new
+#    @feedback_for_meal = FeedbackForMeal.new
+#  end
+#
+#  # GET /feedback_for_meals/1/edit
+#  def edit
+#  end
 
   # POST /feedback_for_meals
   # POST /feedback_for_meals.json
@@ -34,30 +45,6 @@ class FeedbackForMealsController < ApplicationController
         format.html { render action: 'new' }
         format.json { render json: @feedback_for_meal.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PATCH/PUT /feedback_for_meals/1
-  # PATCH/PUT /feedback_for_meals/1.json
-  def update
-    respond_to do |format|
-      if @feedback_for_meal.update(feedback_for_meal_params)
-        format.html { redirect_to @feedback_for_meal, notice: 'Feedback for meal was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @feedback_for_meal.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /feedback_for_meals/1
-  # DELETE /feedback_for_meals/1.json
-  def destroy
-    @feedback_for_meal.destroy
-    respond_to do |format|
-      format.html { redirect_to feedback_for_meals_url }
-      format.json { head :no_content }
     end
   end
 

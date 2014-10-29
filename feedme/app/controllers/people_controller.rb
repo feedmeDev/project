@@ -87,12 +87,18 @@ class PeopleController < ApplicationController
   # DELETE /people/1
   # DELETE /people/1.json
   def destroy
-    @person.destroy
-    respond_to do |format|
-      format.html { redirect_to people_url }
+    @person = People.find(params[:id])
+
+    @person.still_active = false
+
+    if @person.save
       format.json { head :no_content }
+    else
+      format.json { render json: @person.errors, status: :unprocessable_entity }
     end
   end
+
+    
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -102,6 +108,6 @@ class PeopleController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
-      params.require(:person).permit(:name, :username, :password, :still_active, :staff)
+      params.require(:person).permit(:name, :username, :password, :staff)
     end
 end
