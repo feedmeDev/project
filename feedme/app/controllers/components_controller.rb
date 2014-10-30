@@ -5,20 +5,16 @@ class ComponentsController < ApplicationController
   # GET /components.json
   def index
     @components = Component.all
+
+    render json: @components
   end
 
   # GET /components/1
   # GET /components/1.json
   def show
-  end
+    @component = Component.find(params[:id])
 
-  # GET /components/new
-  def new
-    @component = Component.new
-  end
-
-  # GET /components/1/edit
-  def edit
+    render json: @component
   end
 
   # POST /components

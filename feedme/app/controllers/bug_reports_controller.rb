@@ -37,20 +37,6 @@ class BugReportsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /bug_reports/1
-  # PATCH/PUT /bug_reports/1.json
-  def update
-    respond_to do |format|
-      if @bug_report.update(bug_report_params)
-        format.html { redirect_to @bug_report, notice: 'Bug report was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @bug_report.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # DELETE /bug_reports/1
   # DELETE /bug_reports/1.json
   def destroy

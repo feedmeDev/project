@@ -9,18 +9,20 @@ class MealsController < ApplicationController
     render json: @meals
   end
 
+  #return meal_ids for meals that have not expired yet
+  # GET /meals/current
+  def get_current_meals
+    @list = []
+    
+    
+  end
+
   # GET /meals/1
   # GET /meals/1.json
   def show
-  end
+    @meal = Meal.find(params[:id])
 
-  # GET /meals/new
-  def new
-    @meal = Meal.new
-  end
-
-  # GET /meals/1/edit
-  def edit
+    render json: @meal
   end
 
   # POST /meals
@@ -71,6 +73,6 @@ class MealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meal_params
-      params.require(:meal).permit(:date_and_time_of_meal, :still_active, :deadline)
+      params.require(:meal).permit(:date_and_time_of_meal, :deadline)
     end
 end
