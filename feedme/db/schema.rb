@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141023020123) do
+ActiveRecord::Schema.define(version: 20141021013142) do
 
   create_table "allergen_components", force: true do |t|
     t.integer  "allergen_warning_id"
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 20141023020123) do
 
   create_table "allergen_warnings", force: true do |t|
     t.string   "warning_content"
-    t.string   "warning_title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,15 +46,6 @@ ActiveRecord::Schema.define(version: 20141023020123) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "component_meals", force: true do |t|
-    t.integer  "meal_id"
-    t.string   "component_belongs_to"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "component_meals", ["meal_id"], name: "index_component_meals_on_meal_id"
 
   create_table "components", force: true do |t|
     t.string   "name"
@@ -87,6 +77,7 @@ ActiveRecord::Schema.define(version: 20141023020123) do
 
   create_table "meals", force: true do |t|
     t.datetime "date_and_time_of_meal"
+    t.boolean  "still_active"
     t.datetime "deadline"
     t.datetime "created_at"
     t.datetime "updated_at"
