@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20141031055408) do
 
   create_table "allergen_warnings", force: true do |t|
     t.string   "warning_content"
+    t.string   "warning_title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
