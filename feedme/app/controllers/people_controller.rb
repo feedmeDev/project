@@ -3,7 +3,7 @@ class PeopleController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
 
-  # GET /people
+  # G
   # GET /people.json
   def index
     @people = Person.all
@@ -72,8 +72,8 @@ class PeopleController < ApplicationController
     end
   end
 
-  # POST /people
-  # POST /people.json
+  # POST /student
+  # POST /student.json
   def create_student
     @person = Person.new(person_params)
     @person.staff = false
@@ -106,18 +106,41 @@ class PeopleController < ApplicationController
   # DELETE /people/1
   # DELETE /people/1.json
   def destroy
-    @person = People.find(params[:id])
+    @person = Person.find(params[:id])
 
     @person.still_active = false
 
-    if @person.save
-      format.json { head :no_content }
-    else
-      format.json { render json: @person.errors, status: :unprocessable_entity }
+    respond_to do |format|
+      if @person.save
+        format.html { redirect_to @person, notice: 'Person was successfully deactivated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @person.errors, status: :unprocessable_entity }
+      end
     end
+
   end
 
-    
+  #  /people/1
+  # DELETE /people/1.json
+  def reactivate
+    @person = Person.find(params[:id])
+
+    @person.still_active = true
+
+    respond_to do |format|
+      if @person.save
+        format.html { redirect_to @person, notice: 'Person was successfully deactivated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @person.errors, status: :unprocessable_entity }
+      end
+    end
+
+  end
+   
 
   private
     # Use callbacks to share common setup or constraints between actions.

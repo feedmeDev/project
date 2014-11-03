@@ -2,14 +2,16 @@ require 'bcrypt'
 
 class Person < ActiveRecord::Base
 
-#unique username needed
+#unique username needed of min length
 validates :username, presence: true
 validates :username, uniqueness: { case_sensitive: false}
+validates :username, length: {minimum: 5}
+
+validates :password, length: {minimum: 8}
 
 validates :still_active, :inclusion => {:in => [true, false]}
 validates :staff, :inclusion => {:in => [true, false]}
 validates :name, presence: true
-
 
 ##################### password stuff
 	attr_accessor :hash_new_password, :new_password_confirmation
