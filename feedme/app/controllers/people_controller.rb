@@ -54,10 +54,9 @@ class PeopleController < ApplicationController
 #  def edit
 #  end
 
-  # POST /people
-  # POST /people.json
-  def create
+  def create_staff
     @person = Person.new(person_params)
+    @person.staff = true
 
     respond_to do |format|
       if @person.save
@@ -69,6 +68,24 @@ class PeopleController < ApplicationController
       end
     end
   end
+
+  # POST /people
+  # POST /people.json
+  def create_student
+    @person = Person.new(person_params)
+    @person.staff = false
+
+    respond_to do |format|
+      if @person.save
+        format.html { redirect_to @person, notice: 'Person was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @person }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @person.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 
   # PATCH/PUT /people/1
   # PATCH/PUT /people/1.json
