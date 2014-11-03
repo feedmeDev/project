@@ -1,5 +1,7 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token
+
 
   # GET /people
   # GET /people.json
@@ -57,6 +59,7 @@ class PeopleController < ApplicationController
   def create_staff
     @person = Person.new(person_params)
     @person.staff = true
+    @person.still_active = true
 
     respond_to do |format|
       if @person.save
@@ -74,13 +77,12 @@ class PeopleController < ApplicationController
   def create_student
     @person = Person.new(person_params)
     @person.staff = false
+    @person.still_active = true
 
     respond_to do |format|
       if @person.save
-        format.html { redirect_to @person, notice: 'Person was successfully created.' }
         format.json { render action: 'show', status: :created, location: @person }
       else
-        format.html { render action: 'new' }
         format.json { render json: @person.errors, status: :unprocessable_entity }
       end
     end
@@ -125,6 +127,6 @@ class PeopleController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
-      params.require(:person).permit(:name, :username, :password, :staff)
+      params.require(:person).permit(:name, :username, :password)
     end
 end

@@ -59,11 +59,11 @@ Feedme::Application.routes.draw do
   #get /people/:id - gets a person
 
   #list all
-  get '/staff' => 'person#index_staff'
-  get '/students' => 'person#index_students'
+  get '/staff' => 'people#index_staff'
+  get '/students' => 'people#index_students'
   
-  post '/staff' => 'person#create_staff'
-  post '/student' => 'person#create_staff'
+  post '/staff' => 'people#create_staff'
+  post '/student' => 'people#create_student'
 
 
 

@@ -2,9 +2,19 @@ require 'bcrypt'
 
 class Person < ActiveRecord::Base
 
+#unique username needed
+validates :username, presence: true
+validates :username, uniqueness: { case_sensitive: false}
+
+validates :still_active, :inclusion => {:in => [true, false]}
+validates :staff, :inclusion => {:in => [true, false]}
+validates :name, presence: true
+
+
+##################### password stuff
 	attr_accessor :hash_new_password, :new_password_confirmation
 
-	validates_confirmation_of :new_password, if=>:password_changed?
+	validates_confirmation_of :new_password, :if=>:password_changed?
 
 	before_save :hash_new_password, :if=>:password_changed?
 
