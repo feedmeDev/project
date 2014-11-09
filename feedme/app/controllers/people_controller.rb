@@ -2,8 +2,28 @@ class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token
 
+  #needs username and password
+  #returns a user
+  # GET /staff/login
+  # GET /staff/login.json
+  def login_staff
+    @person = People.find_by(username: params[:username], password: params[:password], staff: true);
+    
+    render json: @person
+  end
 
-  # G
+  #needs username and password
+  #returns a user
+  # GET /student/login
+  # GET /student/login.json
+  def login_student
+    @person = People.find_by(username: params[:username], password: params[:password], staff: false);
+
+    render json: @person
+  end
+
+
+  # GET people
   # GET /people.json
   def index
     @people = Person.all

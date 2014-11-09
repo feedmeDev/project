@@ -69,5 +69,11 @@ Feedme::Application.routes.draw do
   #reactivate person
   put '/people/reactivate/:id' => 'people#reactivate'
 
+  #login
+  get '/staff/login' => 'people#login_staff'
+  get '/student/login' => 'people#login_student'
+
+
+
 
 end
