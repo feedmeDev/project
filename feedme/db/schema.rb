@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20141031055408) do
   create_table "meals", force: true do |t|
     t.datetime "date_and_time_of_meal"
     t.boolean  "still_active"
-    t.datetime "deadline"
+    t.date     "deadline"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

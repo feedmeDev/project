@@ -7,9 +7,13 @@ class PeopleController < ApplicationController
   # GET /staff/login
   # GET /staff/login.json
   def login_staff
-    @person = People.find_by(username: params[:username], password: params[:password], staff: true);
+    @person = Person.find_by(username: params[:username], password: params[:password], staff: true);
     
-    render json: @person
+    if @person.still_active
+      render json: @person.id
+    else
+      render json: nil
+    end
   end
 
   #needs username and password
@@ -17,9 +21,14 @@ class PeopleController < ApplicationController
   # GET /student/login
   # GET /student/login.json
   def login_student
-    @person = People.find_by(username: params[:username], password: params[:password], staff: false);
+    @person = Person.find_by(username: params[:username], password: params[:password], staff: false);
 
-    render json: @person
+    if @person.still_active
+      render json: @person.id
+    else
+      render json: nil
+    end
+
   end
 
 

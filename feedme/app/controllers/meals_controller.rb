@@ -9,13 +9,12 @@ class MealsController < ApplicationController
     render json: @meals
   end
 
-  #return meal_ids for meals that have not expired yet
-  # GET /meals/current
-  def get_current_meals
-    @list = []
-    
-    
+  def get_future_meals
   end
+
+  def get_past_meals
+  end
+
 
   # GET /meals/1
   # GET /meals/1.json
@@ -68,8 +67,8 @@ class MealsController < ApplicationController
   #
   def add_items_to_meal
     @meal = Meal.find(params[:id])
-    @list_components = params[:list_items]
-    
+    @list_components = params[:list_items]    
+
     @list_component.each do | c |
       @meal.components_meals << c
     end

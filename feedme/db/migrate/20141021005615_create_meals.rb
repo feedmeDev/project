@@ -3,7 +3,7 @@ class CreateMeals < ActiveRecord::Migration
     create_table :meals do |t|
       t.datetime :date_and_time_of_meal
       t.boolean :still_active
-      t.datetime :deadline
+      t.date :deadline
 
       t.timestamps
     end
