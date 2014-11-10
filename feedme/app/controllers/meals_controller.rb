@@ -10,9 +10,16 @@ class MealsController < ApplicationController
   end
 
   def get_future_meals
+    @future_meals = Meal.where(date_and_time_of_meal > DateTime.now)
+
+    render json: @future_meals
   end
 
   def get_past_meals
+    @past_meals = Meal.where(date_and_time_of_meal < DateTime.now)
+
+    render json: @past_meals
+
   end
 
 
@@ -67,21 +74,18 @@ class MealsController < ApplicationController
   #
   def add_items_to_meal
     @meal = Meal.find(params[:id])
-    @list_components = params[:list_items]    
+    @component = params[:component]    
 
-    @list_component.each do | c |
-      @meal.components_meals << c
-    end
+    @meal.components_meals << @componenet
   end
 
 
   def remove_items_from_meal
     @meal = Meal.find(params[:id])
-    @list_components = params[:list_items]
+    @component = params[:component]       
 
-    @list_component.each do | c |
-      @meal.components_meals >> c
-    end
+    @meal.components_meals >> @componenet
+
   end
 
 

@@ -1,5 +1,6 @@
 class ComponentsController < ApplicationController
   before_action :set_component, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token
 
   # GET /components
   # GET /components.json
@@ -39,7 +40,7 @@ class ComponentsController < ApplicationController
     respond_to do |format|
       if @component.update(component_params)
         format.html { redirect_to @component, notice: 'Component was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: @component }
       else
         format.html { render action: 'edit' }
         format.json { render json: @component.errors, status: :unprocessable_entity }
@@ -49,13 +50,13 @@ class ComponentsController < ApplicationController
 
   # DELETE /components/1
   # DELETE /components/1.json
-  def destroy
-    @component.destroy
-    respond_to do |format|
-      format.html { redirect_to components_url }
-      format.json { head :no_content }
-    end
-  end
+#  def destroy
+#    @component.destroy
+#    respond_to do |format|
+#      format.html { redirect_to components_url }
+#      format.json { head :no_content }
+#    end
+#  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
