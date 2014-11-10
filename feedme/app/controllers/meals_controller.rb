@@ -88,6 +88,12 @@ class MealsController < ApplicationController
 
   end
 
+  # GET /meals/components/1.json
+  def get_components_for_meal
+    @list_components = Components_Meals.where(meal_id => :id)
+
+    render json: @list_components
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
