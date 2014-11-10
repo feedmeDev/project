@@ -71,7 +71,7 @@ class MealsController < ApplicationController
     end
   end
 
-  #
+  # POST /meal/add_component
   def add_items_to_meal
     @meal = Meal.find(params[:id])
     @component = params[:component]    
