@@ -1,5 +1,6 @@
 class MealsController < ApplicationController
   before_action :set_meal, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token
 
   # GET /meals
   # GET /meals.json
@@ -9,14 +10,21 @@ class MealsController < ApplicationController
     render json: @meals
   end
 
+
+  # GET /meals/future.json
   def get_future_meals
-    @future_meals = Meal.where(date_and_time_of_meal > DateTime.now)
+#    @future_meals = Meal.find(date_and_time_of_meal > DateTime.now)
+
+    @future_meals = Meal.all(:conditions=>['date_and_time_of_meal >= ?', DateTime.now])
 
     render json: @future_meals
   end
 
   def get_past_meals
-    @past_meals = Meal.where(date_and_time_of_meal < DateTime.now)
+#    @past_meals = Meal.find(date_and_time_of_meal < DateTime.now)
+
+
+    @past_meals = Meal.all(:conditions=>['date_and_time_of_meal < ?', DateTime.now])
 
     render json: @past_meals
 
@@ -73,27 +81,48 @@ class MealsController < ApplicationController
 
   # POST /meal/add_component
   def add_items_to_meal
-    @meal = Meal.find(params[:id])
-    @component = params[:component]    
+    @meal = Meal.find(params[:meal])
+    @component = Component.find(params[:component])
 
-    @meal.components_meals << @componenet
+    @meal.components << @component
+
+    head :no_content
+    
   end
 
-
+  # DELETE /meal/delete_component
   def remove_items_from_meal
-    @meal = Meal.find(params[:id])
-    @component = params[:component]       
+    @meal = Meal.find(params[:meal])
+    @component = Component.find(params[:component])
 
-    @meal.components_meals >> @componenet
+    @meal.components.delete(@component)
+
+    head :no_content
 
   end
 
-  # GET /meals/components/1.json
+  # GET /meal/components/1.json
   def get_components_for_meal
-    @list_components = Components_Meals.where(meal_id => :id)
+    @meal = Meal.find(params[:id])
+
+    @list_components = @meal.components
 
     render json: @list_components
   end
+
+  # GET /meal/by_date -d date
+  def get_meals_on_date
+    @today = params[:date]
+    @meals_today = Meal.where('date_and_time_of_meal BETWEEN ? AND ?', @today.beginning_of_day, @today.end_of_day).all
+
+    render json: @meals_today
+  end
+
+  # GET /meal/report
+  def get_report
+  
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

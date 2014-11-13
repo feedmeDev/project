@@ -10,20 +10,27 @@ class AttendancesController < ApplicationController
   # GET /attendances/1
   # GET /attendances/1.json
   def show
+
+    @attendance = Attendance.find(params[:id])
+
+    render json: @attendance
+
   end
 
   # GET /attendances/new
-  def new
-    @attendance = Attendance.new
-  end
+#  def new
+#    @attendance = Attendance.new
+#  end
 
   # GET /attendances/1/edit
-  def edit
-  end
+#  def edit
+#  end
 
   # POST /attendances
   # POST /attendances.json
   def create
+    attendance = Attendance.delete_all(['meal_id = ? and person_id = ?', params[:meal_id], params[:person_id]])
+
     @attendance = Attendance.new(attendance_params)
 
     respond_to do |format|
@@ -35,6 +42,18 @@ class AttendancesController < ApplicationController
         format.json { render json: @attendance.errors, status: :unprocessable_entity }
       end
     end
+
+
+    list_components = params[:list]
+
+    Indication_for_meals.delete_all(['attendance_id = ?', @attendance.id])
+
+    list_componenets.each do | lc |
+
+      i = Indications_for_meals.create(attendance_id: @attendance.id, component_id: lc)
+
+    end
+
   end
 
   # PATCH/PUT /attendances/1
@@ -53,12 +72,22 @@ class AttendancesController < ApplicationController
 
   # DELETE /attendances/1
   # DELETE /attendances/1.json
-  def destroy
-    @attendance.destroy
-    respond_to do |format|
-      format.html { redirect_to attendances_url }
-      format.json { head :no_content }
-    end
+#  def destroy
+#    @attendance.destroy
+#    respond_to do |format|
+#      format.html { redirect_to attendances_url }
+#      format.json { head :no_content }
+#    end
+#  end
+
+  # POST /indication/going
+  def indicate_going
+    meal = Meal.find(params[:meal_id])
+    person = Person.find(params[:person_id])
+
+    attendance = Attendance.where(['meal_id = ? and person_id = ?', meal, person])
+
+    attendance.going = params[:going]
   end
 
   private

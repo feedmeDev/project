@@ -21,6 +21,7 @@ Feedme::Application.routes.draw do
 
   resources :people
 
+
   # See how all your routes lay out with "rake routes".
 
   # Example of regular route:
@@ -75,5 +76,19 @@ Feedme::Application.routes.draw do
 
 
 
+
+  #meals
+  get '/meal/future' => 'meals#get_future_meals'
+  get '/meal/past' => 'meals#get_past_meals'
+
+  #components to meal relationship
+  post '/meal/add_component' => 'meals#add_items_to_meal'
+  delete '/meal/delete_component' => 'meals#remove_items_from_meal'
+  
+
+  #get components for a meal
+  get '/meal/components/:id' => 'meals#get_components_for_meal'
+
+  get '/meal/by_date' => 'meal#get_meals_on_date'
 
 end

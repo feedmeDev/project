@@ -56,10 +56,8 @@ ActiveRecord::Schema.define(version: 20141031055408) do
   end
 
   create_table "components_meals", force: true do |t|
-    t.integer  "component_id"
-    t.integer  "meal_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "meal_id"
+    t.integer "component_id"
   end
 
   create_table "feedback_for_meals", force: true do |t|
@@ -85,7 +83,6 @@ ActiveRecord::Schema.define(version: 20141031055408) do
 
   create_table "meals", force: true do |t|
     t.datetime "date_and_time_of_meal"
-    t.boolean  "still_active"
     t.date     "deadline"
     t.datetime "created_at"
     t.datetime "updated_at"

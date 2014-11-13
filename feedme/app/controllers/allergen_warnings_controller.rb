@@ -1,6 +1,5 @@
 class AllergenWarningsController < ApplicationController
-  before_action :set_allergen_warning, only: [:show, :edit, :update, :destroy]
-  before_filter :set_headers
+  before_action :set_person, only: [:show, :edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token
 
   # GET /allergen_warnings
@@ -70,7 +69,4 @@ class AllergenWarningsController < ApplicationController
       params.require(:allergen_warning).permit(:warning_content, :warning_title)
     end
 
-    def set_headers
-      headers['Access-Controll-Allow-Origin'] = '*'
-    end
 end

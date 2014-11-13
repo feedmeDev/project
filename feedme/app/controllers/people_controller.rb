@@ -3,7 +3,7 @@ class PeopleController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   #needs username and password
-  #returns a user
+  #retuerns a user
   # GET /staff/login
   # GET /staff/login.json
   def login_staff
@@ -152,7 +152,7 @@ class PeopleController < ApplicationController
   end
 
   #  /people/1
-  # DELETE /people/1.json
+  # PUT /people/1.json
   def reactivate
     @person = Person.find(params[:id])
 
