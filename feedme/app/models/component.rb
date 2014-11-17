@@ -1,5 +1,9 @@
 class Component < ActiveRecord::Base
 
+has_many :indications_for_meals
+has_many :attendances, through: :indications_for_meals
+
+
 has_many :components_meal
 has_many :meals, through: :components_meal
 

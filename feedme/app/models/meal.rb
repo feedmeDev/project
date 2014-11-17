@@ -4,6 +4,7 @@ class Meal < ActiveRecord::Base
 has_many :components_meal
 has_many :components, through: :components_meal
 
+belongs_to :attendance
 
 #validations
 validate :check_dates

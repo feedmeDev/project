@@ -1,5 +1,7 @@
 class AttendancesController < ApplicationController
   before_action :set_attendance, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token
+
 
   # GET /attendances
   # GET /attendances.json
@@ -17,6 +19,13 @@ class AttendancesController < ApplicationController
 
   end
 
+  # GET /attendance/person/1.json
+  def get_attendance_for_person
+    @attendances = Attendance.where(['person_id = ?', params[:id]])
+
+    render json: @attendances
+  end
+
   # GET /attendances/new
 #  def new
 #    @attendance = Attendance.new
@@ -29,7 +38,26 @@ class AttendancesController < ApplicationController
   # POST /attendances
   # POST /attendances.json
   def create
-    attendance = Attendance.delete_all(['meal_id = ? and person_id = ?', params[:meal_id], params[:person_id]])
+    person = Person.find(params[:person_id])
+    meal = Meal.find(params[:meal_id])
+
+    @attendance = Attendance.where(['meal_id = ? and person_id = ?', meal, person]).first
+    
+
+    
+    if @attendance.present?
+      @attendance.components.destroy_all
+      @attendance.delete
+    end
+
+    #render json: @attendance
+
+    #^^^^ works
+
+    #deleting historic data does not work
+
+
+    #vvvv works
 
     @attendance = Attendance.new(attendance_params)
 
@@ -43,32 +71,39 @@ class AttendancesController < ApplicationController
       end
     end
 
+    
 
     list_components = params[:list]
 
-    Indication_for_meals.delete_all(['attendance_id = ?', @attendance.id])
+    #delete all components for an attendance
 
-    list_componenets.each do | lc |
+    if @attendance.going
 
-      i = Indications_for_meals.create(attendance_id: @attendance.id, component_id: lc)
+      list_components.each do | lc |
 
+        comp = Component.find(lc)
+
+        #create all component relationships for 
+        @attendance.components << comp
+
+      end
     end
 
   end
 
   # PATCH/PUT /attendances/1
   # PATCH/PUT /attendances/1.json
-  def update
-    respond_to do |format|
-      if @attendance.update(attendance_params)
-        format.html { redirect_to @attendance, notice: 'Attendance was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @attendance.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+#  def update
+#    respond_to do |format|
+#      if @attendance.update(attendance_params)
+#        format.html { redirect_to @attendance, notice: 'Attendance was successfully updated.' }
+#        format.json { head :no_content }
+#      else
+#        format.html { render action: 'edit' }
+#        format.json { render json: @attendance.errors, status: :unprocessable_entity }
+#      end
+#    end
+#  end
 
   # DELETE /attendances/1
   # DELETE /attendances/1.json
@@ -81,14 +116,14 @@ class AttendancesController < ApplicationController
 #  end
 
   # POST /indication/going
-  def indicate_going
-    meal = Meal.find(params[:meal_id])
-    person = Person.find(params[:person_id])
-
-    attendance = Attendance.where(['meal_id = ? and person_id = ?', meal, person])
-
-    attendance.going = params[:going]
-  end
+#  def indicate_going
+#    meal = Meal.find(params[:meal_id])
+#    person = Person.find(params[:person_id])
+#
+#    attendance = Attendance.where(['meal_id = ? and person_id = ?', meal, person])
+#
+#    attendance.going = params[:going]
+#  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

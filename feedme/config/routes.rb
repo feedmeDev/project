@@ -89,6 +89,10 @@ Feedme::Application.routes.draw do
   #get components for a meal
   get '/meal/components/:id' => 'meals#get_components_for_meal'
 
-  get '/meal/by_date' => 'meal#get_meals_on_date'
+  #get meal by date
+  get '/meal/by_date' => 'meals#get_meals_on_date'
+
+  #report for meal
+  get '/meal/report/:id' => 'meals#get_report'
 
 end
