@@ -2,6 +2,10 @@ require 'bcrypt'
 
 class Person < ActiveRecord::Base
 
+#relationships
+has_many :attendances
+
+
 #unique username needed of min length
 validates :username, presence: true
 validates :username, uniqueness: { case_sensitive: false}

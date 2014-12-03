@@ -26,6 +26,34 @@ class AttendancesController < ApplicationController
     render json: @attendances
   end
 
+
+  # GET /get_report/:id
+  def get_report
+=begin
+    meal = Meal.find(params[:id])
+
+    @attendances = Attendance.where(['meal_id = ?', meal])
+
+    @comps = []
+
+    @attendances.each do | a |
+      a.components.each do | c |
+        @comps << c.id
+      end
+    end
+
+    render json: @comps
+=end
+
+    meal = Meal.find(params[:id])
+
+    attendances = Attendance.where(['meal_id = ?', meal])
+
+    @report.total_students = Person.count(['staff = ?' false])
+
+  end
+  
+
   # GET /attendances/new
 #  def new
 #    @attendance = Attendance.new

@@ -10,7 +10,7 @@ class PeopleController < ApplicationController
     @person = Person.find_by(username: params[:username], password: params[:password], staff: true);
     
     if @person.still_active
-      render json: @person.id
+      render json: @person
     else
       render json: nil
     end
@@ -24,7 +24,7 @@ class PeopleController < ApplicationController
     @person = Person.find_by(username: params[:username], password: params[:password], staff: false);
 
     if @person.still_active
-      render json: @person.id
+      render json: @person
     else
       render json: nil
     end
