@@ -3,7 +3,7 @@ require 'bcrypt'
 class Person < ActiveRecord::Base
 
 #relationships
-has_many :attendances
+belongs_to :attendances
 
 
 #unique username needed of min length

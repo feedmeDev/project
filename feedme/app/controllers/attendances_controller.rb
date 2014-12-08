@@ -45,12 +45,30 @@ class AttendancesController < ApplicationController
     render json: @comps
 =end
 
+
     meal = Meal.find(params[:id])
 
     attendances = Attendance.where(['meal_id = ?', meal])
 
-    @report.total_students = Person.count(['staff = ?' false])
+    #================= numbers start ==========================
+    
+    #how many have indicated
+    @indicated = attendances.where(['meal_id = ?', meal]).count
 
+    #how many active students are there
+    @total_students = Person.where(['staff = ? AND still_active = ?', false, true]).count
+
+    #how many have indicated going
+    @going = attendances.where(['going = ?', true]).count
+    
+    #================= numbers end ============================
+
+
+    #summarise components
+
+    #end summarise components
+
+    render json: {:total_students => @total_students, :indicated => @indicated, :going => @going}
   end
   
 

@@ -4,5 +4,5 @@ class Attendance < ActiveRecord::Base
 
   has_many :meals
 
-  belongs_to :person   
+  has_many :people   
 end
