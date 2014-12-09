@@ -1,3 +1,7 @@
 #!/bin/bash
 
-curl -i -H "Content-type: application/json" -X GET localhost:3000/meal/report/1.json
+echo "---------------------------------------"
+echo "----------------Report-----------------"
+echo "---------------------------------------"
+
+curl -i -H "Content-type: application/json" -X GET localhost:3000/get_report/1.json
