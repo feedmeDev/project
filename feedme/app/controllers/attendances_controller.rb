@@ -66,9 +66,24 @@ class AttendancesController < ApplicationController
 
     #summarise components
 
+    @summary = []
+
+    comps = []
+    attendances.each do | a |
+      a.components.each do | c |
+        comps << c.id
+      end
+    end
+
+
+    meal.components.each do | c |
+      @summary << [c, comps.count(c.id)]
+
+    end
+
     #end summarise components
 
-    render json: {:total_students => @total_students, :indicated => @indicated, :going => @going}
+    render json: {:total_students => @total_students, :indicated => @indicated, :going => @going, :summary => @summary}
   end
   
 
