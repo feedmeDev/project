@@ -19,7 +19,7 @@ cd person
 ./add_staff.sh
 cd ..
 
-echo"people added"
+echo "people added"
 sleep 1
 
 #component population
@@ -27,7 +27,7 @@ cd component
 ./add.sh
 cd ..
 
-echo"components for meals added"
+echo "components for meals added"
 sleep 1
 
 #meal population
