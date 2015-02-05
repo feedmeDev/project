@@ -3,7 +3,7 @@ class CreatePeople < ActiveRecord::Migration
     create_table :people do |t|
       t.string :name
       t.string :username
-      t.string :password
+      t.string :password_digest
       t.boolean :still_active
       t.boolean :staff
 

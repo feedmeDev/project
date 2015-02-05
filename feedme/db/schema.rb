@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141031055408) do
+ActiveRecord::Schema.define(version: 20150101000000) do
 
   create_table "allergen_components", force: true do |t|
     t.integer  "allergen_warning_id"
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20141031055408) do
   create_table "people", force: true do |t|
     t.string   "name"
     t.string   "username"
-    t.string   "password"
+    t.string   "password_digest"
     t.boolean  "still_active"
     t.boolean  "staff"
     t.datetime "created_at"
