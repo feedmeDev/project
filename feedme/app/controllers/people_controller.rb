@@ -7,13 +7,19 @@ class PeopleController < ApplicationController
   # GET /staff/login
   # GET /staff/login.json
   def login_staff
-    @person = Person.find_by(username: params[:username], password: params[:password], staff: true);
     
+    @person = Person.find_by(username: params[:username], staff: true, still_active: true).try(:authenticate, params[:password])
+    
+=begin
     if @person.still_active
       render json: @person
     else
       render json: nil
     end
+=end
+
+  render json: @person
+
   end
 
   #needs username and password
@@ -21,13 +27,18 @@ class PeopleController < ApplicationController
   # GET /student/login
   # GET /student/login.json
   def login_student
-    @person = Person.find_by(username: params[:username], password: params[:password], staff: false);
 
+    @person = Person.find_by(username: params[:username], staff: false, still_active: true).try(:authenticate, params[:password])
+
+
+    render json: @person
+=begin
     if @person.still_active
       render json: @person
     else
       render json: nil
     end
+=end
 
   end
 
@@ -41,33 +52,21 @@ class PeopleController < ApplicationController
   # GET /staff
   # GET /staff.json
   def index_staff
-    people = Person.all
 
-    @staff = []
-
-    people.each do | p |
-      if p.staff
-        @staff.push(p)
-      end
-    end
-    
+    @staff = Person.where(staff: true)
+        
     render json: @staff
+
   end
 
   # GET /students
   # GET /students.json
   def index_students
-    people = Person.all
 
-    @students = []
-
-    people.each do | p |
-      if !p.staff
-        @students.push(p)
-      end
-    end
+    @students = Person.where(staff: false)
 
     render json: @students
+
   end
 
   # GET /people/1
@@ -179,6 +178,6 @@ class PeopleController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
-      params.require(:person).permit(:name, :username, :password, :password_confirmation, :password_digest)
+      params.require(:person).permit(:name, :username, :password, :password_confirmation)
     end
 end

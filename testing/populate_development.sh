@@ -11,7 +11,7 @@ rake db:migrate
 cd ../testing
 echo "data base reset"
 echo "repopulating now"
-sleep 2
+sleep 1
 
 #person population
 cd person
