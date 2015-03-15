@@ -82,9 +82,13 @@ class MealsController < ApplicationController
   # POST /meal/add_component
   def add_items_to_meal
     @meal = Meal.find(params[:meal])
-    @component = Component.find(params[:component])
+    @list_components = Component.find(params[:component_list])
 
-    @meal.components << @component
+    @meal.components.destroy_all
+
+    @list_components.each do | lc |
+      @meal.components << lc
+    end
 
     head :no_content
     

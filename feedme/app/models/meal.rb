@@ -10,7 +10,7 @@ belongs_to :attendance
 validate :check_dates
 
   def check_dates
-    errors.add(:base, "end date should be greater than start") if deadline < date_and_time_of_meal
+    errors.add(:base, "end date should be greater than start") if deadline > date_and_time_of_meal
   end
 
 end

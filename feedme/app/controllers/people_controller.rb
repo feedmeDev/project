@@ -4,28 +4,24 @@ class PeopleController < ApplicationController
 
   #needs username and password
   #retuerns a user
-  # GET /staff/login
-  # GET /staff/login.json
+  # POST /staff/login
+  # POST /staff/login.json
   def login_staff
-    
+
     @person = Person.find_by(username: params[:username], staff: true, still_active: true).try(:authenticate, params[:password])
-    
-=begin
-    if @person.still_active
+
+    if(@person != false)
       render json: @person
     else
-      render json: nil
+      render :text => "not_found", :status => 401
     end
-=end
 
-  render json: @person
-
-  end
+end
 
   #needs username and password
   #returns a user
-  # GET /student/login
-  # GET /student/login.json
+  # POST /student/login
+  # POST /student/login.json
   def login_student
 
     @person = Person.find_by(username: params[:username], staff: false, still_active: true).try(:authenticate, params[:password])
@@ -136,6 +132,10 @@ class PeopleController < ApplicationController
   def destroy
     @person = Person.find(params[:id])
 
+    @person.update_attribute(:still_active , false)
+
+    render json: @person
+=begin
     @person.still_active = false
 
     respond_to do |format|
@@ -148,11 +148,21 @@ class PeopleController < ApplicationController
       end
     end
 
+=end
+
   end
 
   #  /people/1
   # PUT /people/1.json
   def reactivate
+
+    @person = Person.find(params[:id])
+
+    @person.update_attribute(:still_active , true)
+
+    render json: @person
+
+=begin
     @person = Person.find(params[:id])
 
     @person.still_active = true
@@ -166,7 +176,7 @@ class PeopleController < ApplicationController
         format.json { render json: @person.errors, status: :unprocessable_entity }
       end
     end
-
+=end
   end
    
 

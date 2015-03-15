@@ -104,8 +104,6 @@ class AttendancesController < ApplicationController
 
     @attendance = Attendance.where(['meal_id = ? and person_id = ?', meal, person]).first
     
-
-    
     if @attendance.present?
       @attendance.components.destroy_all
       @attendance.delete
