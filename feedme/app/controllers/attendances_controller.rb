@@ -29,23 +29,6 @@ class AttendancesController < ApplicationController
 
   # GET /get_report/:id
   def get_report
-=begin
-    meal = Meal.find(params[:id])
-
-    @attendances = Attendance.where(['meal_id = ?', meal])
-
-    @comps = []
-
-    @attendances.each do | a |
-      a.components.each do | c |
-        @comps << c.id
-      end
-    end
-
-    render json: @comps
-=end
-
-
     meal = Meal.find(params[:id])
 
     attendances = Attendance.where(['meal_id = ?', meal])
@@ -136,7 +119,7 @@ class AttendancesController < ApplicationController
 
     #delete all components for an attendance
 
-    if @attendance.going
+    if @attendance.going && list_components != nil
 
       list_components.each do | lc |
 

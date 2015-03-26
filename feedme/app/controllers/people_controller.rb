@@ -10,12 +10,11 @@ class PeopleController < ApplicationController
 
     @person = Person.find_by(username: params[:username], staff: true, still_active: true).try(:authenticate, params[:password])
 
-    if(@person != false)
+    if(@person != false && @person != nil)
       render json: @person
     else
       render :text => "not_found", :status => 401
     end
-
 end
 
   #needs username and password
@@ -26,16 +25,11 @@ end
 
     @person = Person.find_by(username: params[:username], staff: false, still_active: true).try(:authenticate, params[:password])
 
-
-    render json: @person
-=begin
-    if @person.still_active
+    if(@person != false && @person != nil)
       render json: @person
     else
-      render json: nil
+      render :text => "not_found", :status => 401
     end
-=end
-
   end
 
 

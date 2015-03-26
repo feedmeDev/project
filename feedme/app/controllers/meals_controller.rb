@@ -15,16 +15,16 @@ class MealsController < ApplicationController
   def get_future_meals
 #    @future_meals = Meal.find(date_and_time_of_meal > DateTime.now)
 
-    @future_meals = Meal.all(:conditions=>['date_and_time_of_meal >= ?', DateTime.now])
+    @future_meals = Meal.where('date_and_time_of_meal > ?', DateTime.now).all
 
-    render json: @future_meals
+    render json: {:future => @future_meals}
   end
 
   def get_past_meals
 #    @past_meals = Meal.find(date_and_time_of_meal < DateTime.now)
 
 
-    @past_meals = Meal.all(:conditions=>['date_and_time_of_meal < ?', DateTime.now])
+    @past_meals = Meal.where(:conditions=>['date_and_time_of_meal < ?', DateTime.now]).load
 
     render json: @past_meals
 
@@ -53,6 +53,9 @@ class MealsController < ApplicationController
         format.json { render json: @meal.errors, status: :unprocessable_entity }
       end
     end
+
+    #possibly put components addition here
+
   end
 
   # PATCH/PUT /meals/1
@@ -105,13 +108,13 @@ class MealsController < ApplicationController
 
   end
 
-  # GET /meal/components/1.json
+  # GET /meal/components.json
   def get_components_for_meal
     @meal = Meal.find(params[:id])
 
     @list_components = @meal.components
 
-    render json: @list_components
+    render json: {:components => @list_components}
   end
 
   # GET /meal/by_date -d date
