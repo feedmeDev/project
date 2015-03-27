@@ -80,6 +80,7 @@ Feedme::Application.routes.draw do
   #meals
   get '/meal/future' => 'meals#get_future_meals'
   get '/meal/past' => 'meals#get_past_meals'
+  get '/meal/deadline_past' => 'meals#get_meals_past_deadline'
 
   #components to meal relationship
   post '/meal/add_component' => 'meals#add_items_to_meal'

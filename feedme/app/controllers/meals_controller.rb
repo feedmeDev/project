@@ -125,6 +125,13 @@ class MealsController < ApplicationController
     render json: @meals_today
   end
 
+  # GET /meal/deadline_past
+  def get_meals_past_deadline
+    @meals = Meal.where('deadline < ?', DateTime.now).to_a
+
+    render json: @meals
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_meal
