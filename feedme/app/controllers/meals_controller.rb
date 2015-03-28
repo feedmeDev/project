@@ -15,7 +15,9 @@ class MealsController < ApplicationController
   def get_future_meals
 #    @future_meals = Meal.find(date_and_time_of_meal > DateTime.now)
 
-    @future_meals = Meal.where('date_and_time_of_meal > ?', DateTime.now).all
+    @future_meals = Meal.order(date_and_time_of_meal: :asc).where('date_and_time_of_meal > ?', DateTime.now).all
+
+#    @future_meals.order("date_and_time_of_meal ASC")
 
     render json: {:future => @future_meals}
   end
@@ -24,7 +26,7 @@ class MealsController < ApplicationController
 #    @past_meals = Meal.find(date_and_time_of_meal < DateTime.now)
 
 
-    @past_meals = Meal.where(:conditions=>['date_and_time_of_meal < ?', DateTime.now]).load
+    @past_meals = Meal.order(date_and_time_of_meal: :asc).where(:conditions=>['date_and_time_of_meal < ?', DateTime.now]).load
 
     render json: @past_meals
 
@@ -120,16 +122,16 @@ class MealsController < ApplicationController
   # GET /meal/by_date -d date
   def get_meals_on_date
     @today = params[:date]
-    @meals_today = Meal.where('date_and_time_of_meal BETWEEN ? AND ?', @today.beginning_of_day, @today.end_of_day).all
+    @meals_today = Meal.order(date_and_time_of_meal: :asc).where('date_and_time_of_meal BETWEEN ? AND ?', @today.beginning_of_day, @today.end_of_day).all
 
     render json: @meals_today
   end
 
   # GET /meal/deadline_past
   def get_meals_past_deadline
-    @meals = Meal.where('deadline < ?', DateTime.now).to_a
+    @meals = Meal.order(date_and_time_of_meal: :desc).where('deadline < ?', DateTime.now).to_a
 
-    render json: @meals
+    render json: {:meals => @meals}
   end
 
   private
