@@ -96,4 +96,14 @@ Feedme::Application.routes.draw do
   #report for meal
   get '/get_report/:id' => 'attendances#get_report'
 
+  
+
+
+
+
+
+  #pages
+  get '/index', :to => redirect('index.html')
+  get '/customer_index', :to => redirect('pages/customer.html')
+  get '/staff_index', :to => redirect('pages/staff.html')
 end
