@@ -104,8 +104,6 @@ Feedme::Application.routes.draw do
 
   #pages
   get '/index', :to => redirect('index.html')
-  get '/customer_index', :to => redirect('pages/customer.html')
-  get '/staff_index', :to => redirect('pages/staff.html')
 end
 
 
