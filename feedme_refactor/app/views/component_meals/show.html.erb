@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Meal:</strong>
+  <%= @component_meal.meal_id %>
+</p>
+
+<p>
+  <strong>Component:</strong>
+  <%= @component_meal.component_id %>
+</p>
+
+<%= link_to 'Edit', edit_component_meal_path(@component_meal) %> |
+<%= link_to 'Back', component_meals_path %>

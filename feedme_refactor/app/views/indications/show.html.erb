@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Component:</strong>
+  <%= @indication.component_id %>
+</p>
+
+<p>
+  <strong>Attendance:</strong>
+  <%= @indication.attendance_id %>
+</p>
+
+<%= link_to 'Edit', edit_indication_path(@indication) %> |
+<%= link_to 'Back', indications_path %>

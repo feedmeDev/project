@@ -1,0 +1,27 @@
+<h1>Listing component_meals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Meal</th>
+      <th>Component</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @component_meals.each do |component_meal| %>
+      <tr>
+        <td><%= component_meal.meal_id %></td>
+        <td><%= component_meal.component_id %></td>
+        <td><%= link_to 'Show', component_meal %></td>
+        <td><%= link_to 'Edit', edit_component_meal_path(component_meal) %></td>
+        <td><%= link_to 'Destroy', component_meal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Component meal', new_component_meal_path %>

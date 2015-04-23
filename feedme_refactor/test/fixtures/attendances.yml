@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  meal_id: 
+  person_id: 
+  going: 
+
+two:
+  meal_id: 
+  person_id: 
+  going: 

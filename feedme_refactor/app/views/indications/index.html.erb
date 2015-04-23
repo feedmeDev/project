@@ -1,0 +1,27 @@
+<h1>Listing indications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Attendance</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @indications.each do |indication| %>
+      <tr>
+        <td><%= indication.component_id %></td>
+        <td><%= indication.attendance_id %></td>
+        <td><%= link_to 'Show', indication %></td>
+        <td><%= link_to 'Edit', edit_indication_path(indication) %></td>
+        <td><%= link_to 'Destroy', indication, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Indication', new_indication_path %>
