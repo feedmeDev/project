@@ -60,12 +60,13 @@ class AttendancesController < ApplicationController
     meal = Meal.find(params[:meal_id])
 
     @attendance = Attendance.where(['meal_id = ? and person_id = ?', meal, person]).first
-
+    
+    #delete the previous components the person has indicated on
+    
     if @attendance.present?
       @attendance.components.destroy_all
       @attendance.delete
-    end
-    
+    end 
     
     # create the new attendance
 
@@ -80,6 +81,24 @@ class AttendancesController < ApplicationController
         format.json { render json: @attendance.errors, status: :unprocessable_entity }
       end
     end
+
+    #indicate yes on the list of components
+
+    list_components = params[:list]
+
+    if @attendance.going && list_components != nil
+
+      list_components.each do | lc |
+
+        comp = Component.find(lc)
+
+        #create all component relationships for 
+        @attendance.components << comp
+
+      end
+    end
+
+
   end
   
 
