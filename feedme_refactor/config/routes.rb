@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :component_meals
 
-  resources :meals
+#  resources :meals
 
   resources :components
 
@@ -69,6 +69,11 @@ Rails.application.routes.draw do
   get '/report' => 'attendances#report'
   #create attendances
   post '/attendances' => 'attendances#create'
+  #get indications for a person on a meal
+  get '/indications' => 'attendances#get_indications'
+
+  #pages
+  get '/index', :to => redirect('index.html')
 
 
   # The priority is based upon order of creation: first created -> highest priority.

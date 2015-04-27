@@ -97,10 +97,19 @@ class AttendancesController < ApplicationController
 
       end
     end
-
-
   end
   
+  # GET /indications
+  def get_indications
+    
+    person = Person.find(params[:person_id])
+    meal = Meal.find(params[:meal_id])
+
+    attendance = Attendance.where(['meal_id = ? and person_id = ?', meal, person]).first
+    @components = attendance.components.to_a
+
+    render json: @components
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

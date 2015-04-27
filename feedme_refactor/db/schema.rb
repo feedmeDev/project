@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150419224516) do
+ActiveRecord::Schema.define(version: 20150425203634) do
 
   create_table "attendances", force: true do |t|
     t.integer  "meal_id"
@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(version: 20150419224516) do
     t.string   "name"
     t.string   "username"
     t.string   "password_digest"
-    t.boolean  "still_active"
     t.boolean  "staff"
     t.datetime "created_at"
     t.datetime "updated_at"
