@@ -11,9 +11,10 @@ validates :username, presence: true
 validates :username, uniqueness: { case_sensitive: false}
 validates :username, length: {minimum: 5}
 
+validates :still_active, :inclusion => {:in => [true, false]}
+
 validates :password, length: {minimum: 8}
 
-validates :still_active, :inclusion => {:in => [true, false]}
 validates :staff, :inclusion => {:in => [true, false]}
 validates :name, presence: true
 

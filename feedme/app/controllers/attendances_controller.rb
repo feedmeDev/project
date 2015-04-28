@@ -27,7 +27,7 @@ class AttendancesController < ApplicationController
   end
 
 
-  # GET /get_report/:id
+  # GET /get_report
   def get_report
     meal = Meal.find(params[:id])
 
@@ -60,13 +60,13 @@ class AttendancesController < ApplicationController
 
 
     meal.components.each do | c |
-      @summary << [c, comps.count(c.id)]
+      @summary << {:component_request_count =>{:component => c, :count => comps.count(c.id)}}
 
     end
 
     #end summarise components
 
-    render json: {:total_students => @total_students, :indicated => @indicated, :going => @going, :summary => @summary}
+    render json: {:report =>{:total_students => @total_students, :indicated => @indicated, :going => @going, :summary => @summary}}
   end
   
 

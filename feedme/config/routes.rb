@@ -94,7 +94,7 @@ Feedme::Application.routes.draw do
   get '/meal/by_date' => 'meals#get_meals_on_date'
 
   #report for meal
-  get '/get_report/:id' => 'attendances#get_report'
+  get '/get_report' => 'attendances#get_report'
 
   
 

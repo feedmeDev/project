@@ -13,20 +13,24 @@ class MealsController < ApplicationController
 
   # GET /meals/future.json
   def get_future_meals
-#    @future_meals = Meal.find(date_and_time_of_meal > DateTime.now)
+    number_meals_to_get = 7
 
-    @future_meals = Meal.order(date_and_time_of_meal: :asc).where('date_and_time_of_meal > ?', DateTime.now).all
+    if params[:number_of_meals].present?
+      number_meals_to_get = params[:number_of_meals]
+    end
 
-#    @future_meals.order("date_and_time_of_meal ASC")
+    @future_meals = Meal.order(date_and_time_of_meal: :desc).where('date_and_time_of_meal > ?', DateTime.now).take(number_meals_to_get).to_a
+
 
     render json: {:future => @future_meals}
+
   end
 
   def get_past_meals
 #    @past_meals = Meal.find(date_and_time_of_meal < DateTime.now)
 
 
-    @past_meals = Meal.order(date_and_time_of_meal: :asc).where(:conditions=>['date_and_time_of_meal < ?', DateTime.now]).load
+    @past_meals = Meal.order(date_and_time_of_meal: :asc).where(:conditions=>['date_and_time_of_meal < ?', DateTime.now]).to_a
 
     render json: @past_meals
 
@@ -56,7 +60,15 @@ class MealsController < ApplicationController
       end
     end
 
+
     #possibly put components addition here
+	@list_components = Component.find(params[:component_list])
+
+    @meal.components.destroy_all
+
+    @list_components.each do | lc |
+      @meal.components << lc
+    end
 
   end
 
@@ -122,7 +134,7 @@ class MealsController < ApplicationController
   # GET /meal/by_date -d date
   def get_meals_on_date
     @today = params[:date]
-    @meals_today = Meal.order(date_and_time_of_meal: :asc).where('date_and_time_of_meal BETWEEN ? AND ?', @today.beginning_of_day, @today.end_of_day).all
+    @meals_today = Meal.order(date_and_time_of_meal: :asc).where('date_and_time_of_meal BETWEEN ? AND ?', @today.beginning_of_day, @today.end_of_day).to_a
 
     render json: @meals_today
   end
