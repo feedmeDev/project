@@ -12,11 +12,17 @@ class MealsController < ApplicationController
 
   # GET /meals/future.json
   def get_future_meals
+    
+    number_meals_to_get = 7
 
-    @future_meals = Meal.order(date_and_time: :asc).where('date_and_time > ?', DateTime.now).take(7).to_a
+    if params[:number_of_meals].present?
+      number_meals_to_get = params[:number_of_meals]
+    end
+
+    @future_meals = Meal.order(date_and_time: :asc).where('date_and_time > ?', DateTime.now).take(number_meals_to_get).to_a
 
 
-    render json: {:future => @future_meals}
+    render json: {:future => @future_meals, :number_of_meals_returned => number_meals_to_get}
 
   end
 
@@ -55,6 +61,14 @@ class MealsController < ApplicationController
     end
 
     #possibly put components addition here
+    @list_components = Component.find(params[:component_list])
+
+    @meal.components.destroy_all
+
+    @list_components.each do | lc |
+      @meal.components << lc
+    end
+
 
   end
   
