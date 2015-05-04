@@ -1,0 +1,57 @@
+<div id="sub_page_container">
+
+	<div ng-controller="CTRLPersonController as customer_creator">
+
+		<form ng-submit="customer_creator.create_customer()">
+		
+			<h2>Add customer</h2>
+			<hr>
+			Desired Name:
+			<input id="textField" type="text" placeholder="Name" name="name" ng-model="customer_creator.name"required />
+			<!-- {{customer_creator.name}} -->
+
+			Desired Username:
+			<input id="textField" type="text" placeholder="Username" name="username" ng-model="customer_creator.username" required />
+			<!--{{customer_creator.username}} -->
+
+			Desired Password:
+			<input id="textField" type="password" placeholder="Password" name="password" ng-model="customer_creator.password" required/>
+			<!-- {{customer_creator.password}} -->
+			
+			Confirm Password:
+			<input id="textField" type="password" placeholder="Confirm Password" name="password_confirmation" ng-model="customer_creator.password_confirmation" required />
+			<!-- {{customer_creator.password_confirmation}} -->
+			
+			<input id="submit" type="submit" value="Add customer" />
+
+		</form>
+	
+
+		<div>
+			<button ng-click="customer_creator.view_all_customers()">View customers</button>
+			<table class="center">
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Username</th>
+					<th>Active</th>
+					<th>Staff</th>
+					<th>Update</th>
+					<th>Deactivate</th>
+				</tr>
+
+				<tr ng-repeat="person in customer_creator.get_people()">
+					<td>{{person.id}}</td>
+					<td>{{person.name}}</td>
+					<td>{{person.username}}</td> 
+					<td>{{person.still_active}}</td> 
+					<td>{{person.staff}}</td> 
+					<td>Update</td>
+					<td>Delete</td>
+				</tr>
+			</table>	
+		</div>
+
+	</div>
+
+</div>

@@ -5,6 +5,8 @@ class ComponentsController < ApplicationController
   # GET /components.json
   def index
     @components = Component.all
+
+    render json: {:components => @components}
   end
 
   # GET /components/1

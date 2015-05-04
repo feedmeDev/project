@@ -1,0 +1,27 @@
+<h2>View</h2>
+<div class="center">
+    <div class="component_list_titles">
+   		<p class="component_name_title">Name</p>
+    	<p class="component_updates_title">Update</p>
+    </div>
+
+	<div class="component_for_edit" ng-repeat="component in components">
+    	<p class="component_name">{{component.name}}</p>
+    	<img src="imgs/pencil.jpg" class="buttonHover" ng-click="set_focus_edit(component)" />
+		<div ng-show="get_show_edit(component.id)" ng-repeat-end>
+			<form >
+		    	<hr>
+				<p>Desired Name:</p>
+				<input id="textField" type="text" ng-model="component.name" required />
+		    	<br />
+		    	<p>Desired Description:</p>
+		    	<textarea id="textArea" ng-model="component.description" required></textarea>
+			
+		   		<input id="submit" type="submit" value="Save Changes" ng-click="edit_component(component); get_all_components()" />
+			</form>
+		</div>
+	</div>
+</div>
+
+
+

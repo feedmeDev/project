@@ -1,0 +1,118 @@
+<h1>meal content page</h1>
+
+
+<div 
+	class="meal_container"
+	ng-controller="CTRLListComponentController as meal_list_control"
+	>
+	<div 
+		ng-click="meal_list_control.get_all_components()"
+		>
+		Click to View Components
+	</div>
+
+	
+
+	<form ng-submit="meal_list_control.make_meal()">
+
+		<div id="form_content_holder_for_create_meal">
+
+			Date and Time of Meal (must be after the deadline): <br /> 
+
+			<input id="textField" type="text" placeholder="Date and Time of Meal" name="date_and_time_of_meal" ng-model="meal_list_control.date_and_time_of_meal" required />
+			<br /> <br />
+			Meal DeadLine: <br />
+
+			<input id="textField" type="text" placeholder="Date and Time of Deadline" name="deadline" ng-model="meal_list_control.deadline" required /> <br />
+
+			
+
+
+
+		</div>
+
+		<div 
+			class="component_container"
+			>
+			<div 
+				class="components_header"
+				>
+				<h2>Add Components</h2>
+			</div>
+
+			
+
+			<div 
+				class="components_to_select"
+				ng-repeat="component in meal_list_control.display_components()" >
+				<div 
+					ng-click="meal_list_control.swap_component_indication(component.id)"
+
+					ng-class="{ 'will_indicate_on': meal_list_control.check_component_in_list(component.id), 'will_not_indicate_on': !meal_list_control.check_component_in_list(component.id), } "
+
+
+
+					class="name_and_description">
+					<p class="name_component_individual">Name: {{ component.name }}</p>
+					
+					<!--
+					<p class="description_component_individual">Description: {{ component.description }}</p>
+
+					-->
+
+
+				</div>
+			</div>
+
+			<div id="selected_components_container">
+			<div
+				class="selected_components"
+				ng-repeat="component in meal_list_control.display_components()"
+				ng-show="meal_list_control.check_component_in_list(component.id)">
+
+				{{ component.name }}
+				
+
+			</div>
+			</div>
+
+
+		</div>
+
+
+		<input id="submit_create_meal" type="submit" value="Create Meal" />
+
+	</form>
+
+	<div >
+		<button ng-click="meal_list_control.view_all_meals()">View meal</button>
+		<table class="center">
+			<tr>
+				<th>ID</th>
+				<th>Date and time of meal</th>
+				<th>Deadline</th>
+				<th>Created at</th>
+				<th>Updated at</th>
+				<th>Update</th>
+				<th>Delete</th>
+			</tr>
+
+			<tr  ng-repeat="viewedMeal in meal_list_control.meal_list">
+				<td>{{viewedMeal.id}}</td>
+				<td>{{viewedMeal.date_and_time_of_meal}}</td>
+				<td>{{viewedMeal.deadline}}</td> 
+				<td>{{viewedMeal.created_at}}</td> 
+				<td>{{viewedMeal.updated_at}}</td> 
+				<td>Update</td>
+				<td>Delete</td>
+			</tr>
+
+		</table>
+
+	</div>
+
+</div>
+
+
+
+

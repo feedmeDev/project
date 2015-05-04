@@ -1,0 +1,50 @@
+<h1>report content page</h1>
+<div id="sub_page_container">
+	<div 
+		ng-controller="CTRLReportController as report_control"
+		ng-init="report_control.get_meals_the_deadline_has_passed_on()"
+		>
+		<div 
+			ng-repeat="meal in report_control.get_meals()"
+			class="show_meal_div"
+			>
+
+			<div
+				ng-click="report_control.setTab(meal.id)"
+				>
+				<p class="meal_date_time">
+					Date and time of meal: {{ meal.date_and_time_of_meal }}
+				</p>
+			</div>
+
+			<!--the indication part of the page
+				shown only when selected
+			-->
+
+			<div 
+				ng-show="report_control.getTab(meal.id)"
+				class="show_meal_components_div"
+				>
+				<p class="meal_deadline">
+					Deadline of meal: {{meal.deadline}}
+				</p>
+				<p>
+					Number of People Total: {{report_control.get_total_students()}}
+				</p>
+				<p>
+					Number of People Going: {{report_control.get_number_going()}}
+				</p>
+				<p>
+					Number of People Indicated: {{report_control.get_students_who_have_indicated()}}
+				</p>
+
+				{{report_control.get_components()}}
+				<div
+					class="list_components_in_meal"
+					ng-repeat="component in report_control.get_components()"
+					>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html ng-app="feedme-web">
+	<head>
+		<title>Feedme</title>
+		<script src="angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+		<script src="angular-resource.js"></script>
+		<script src="app.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="styles.css" />
+	</head>
+		<body>
+			<!--login controller
+				if the user is logged in the they are able to see the page
+				if they are not logged in then they will see the login form-->
+
+			<!-- Start of the backdrop -->
+			<div class="backDrop">
+
+			
+
+				<div ng-controller="CTRLLoginController as login_control">
+				
+					<!--login form
+						this is where the user logs in
+						only on screen if the user is not logged in-->
+					<div class="loginContainer" ng-hide="login_control.isLoggedIn()">
+						<div class="loginContainerHeader"><h2>Login</h2></div>
+						<form id="login_form_homepage" name="login_form" ng-submit="login_control.login()">
+								<p class="loginText">Username: </p>
+								<input type="text" name="username" 
+								id="login_username" 
+								class="loginDetails"
+								placeholder="Username"
+								ng-model="login_control.username" required>
+								<br />
+								<br />
+								<p class="loginText"> Password: </p>
+								<input type="password" name="password" 
+								id="login_password" 
+								class="loginDetails"
+								placeholder="Password"
+								ng-model="login_control.password" required>
+								<br />
+								<input type="submit" value="Login" class="loginButton">
+						</form>
+					</div>
+	
+					<!--page controller
+						controls what page is on the screen-->
+					<div ng-controller="CTRLPageController as page_control" ng-show="login_control.isLoggedIn()">
+	
+	
+					<div class="logoutDisplay">
+							<a href="#" ng-click="login_control.logout()" class="logoutText">Log Out</a>
+						</div>
+	
+					<header>
+						<h2>FeedMe</h2>
+					</header>
+	
+	
+						<!--header
+							-->
+						
+	
+						<!--site navigation-->
+						<nav id="set_pages">
+							<ul class="nav">
+								<li class="nav">
+									<a 
+									class="navList"
+									href="#customers">Customers</a>
+								</li>
+								<li class="nav">
+									<a
+									class="navList" 
+									href="#staff">Staff</a>
+								</li>
+								<li class="nav">
+									<a 
+									class="navList"
+									href="#meals">Meals</a>
+								</li>
+								<li class="nav">
+									<a 
+									class="navList"
+									href="#components">Components</a>
+								</li>
+								<li class="nav">
+									<a 
+									class="navList"
+									href="#report">Report</a>
+								</li>
+							</ul>
+						</nav>
+	
+	
+						<!--all of this is the sub page that is displayed to the user for a subset of tasks-->
+						<div class="content">
+							
+							<div ng-view> </div>
+
+						</div>
+					</div>
+				</div>
+
+
+			<!-- End of the backdrop -->
+			</div>
+
+	</body>
+</html>

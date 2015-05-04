@@ -72,6 +72,16 @@ Rails.application.routes.draw do
   #get indications for a person on a meal
   get '/indications' => 'attendances#get_indications'
 
+  #components controller
+  #get individual component
+  get '/component' => 'components#show'
+  #get all components
+  get '/components' => 'components#index'
+  #create a component
+  post '/component' => 'components#create'
+  #edit a component
+  put '/component' => 'components#update'
+
   #pages
   get '/index', :to => redirect('index.html')
 
