@@ -1,0 +1,88 @@
+<h1>Add</h1>
+<form>
+	<div 
+		id="date_time_location">
+		<p>
+			Date and Time of Meal
+			<br />
+			(must be after the deadline):
+		</p>
+		<input 
+			id="meal_date" 
+			type="text" 
+			placeholder="Meal Date and Time" 
+			name="date_and_time" 
+			ng-model="meal_to_add.date_and_time" 
+			required 
+			/>
+		<p>
+			Meal DeadLine:
+		</p>
+		<input 
+			id="meal_deadline" 
+			type="text" 
+			placeholder="Meal Deadline" 
+			name="deadline" 
+			ng-model="meal_to_add.deadline" 
+			required 
+			/>
+		<p>
+			Meal Location
+		</p>
+		<input 
+			id="meal_location" 
+			type="text" 
+			placeholder="Meal Location" 
+			name="location" 
+			ng-model="meal_to_add.location" 
+			required 
+			/>
+		<br />
+		<input 
+			type="submit" 
+			value="Add" 
+			ng-click="add_meal(meal_to_add)" 
+			/>
+	</div>
+	<div 
+		id="component_addition"
+		>
+		<div 
+			id="add_components_to_meal"
+			>
+			<p>
+				Select some components to add.
+			</p>
+			<div 
+				ng-repeat="component in get_all_components()"
+				>
+				<p 
+					ng-click="add_component_to_list(component)">
+					{{component.name}}
+				</p>
+			</div>
+		</div>
+		<table 
+			id="remove_component_from_meal"
+			>
+			<th>
+				Components currently in Meal.
+			</th>
+			<tr 
+				ng-repeat="component in selected_components"
+				>
+				<td
+					class="component_name"
+					>
+					{{component.name}}
+				</td>
+				<td
+					class="remove"
+					ng-click="remove_component_from_list(component)"
+					>
+					Remove From Meal
+				</td>
+			</tr>
+		</div>
+	</div>
+</form>

@@ -47,7 +47,7 @@
 		return {
 			create: 
 				//returns a promise of a request return to create a meal
-				function (meal_in, component_listIn) {
+				function (date_and_time_of_mealIn, deadlineIn, component_listIn) {
 					
 					alert("start req");
 
@@ -59,7 +59,7 @@
 							'Content-Type': 'application/json'
 						},
 						data: { 
-							meal: meal_in, component_list: component_listIn
+							meal:{date_and_time: date_and_time_of_mealIn, deadline: deadlineIn}, component_list: component_listIn
 						},
 					}
 
@@ -100,14 +100,14 @@
 					return promise;
 				},
 
-			get_deadline_past:
+			past_deadline:
 				//returns a promise of a request return that contains all meals for which the deadline has passed
 				function () {
 					
 					//the request with method, url, content-type, and data needed for a login
 					var req =  {
 						method: 'GET', 
-						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/meals/deadline_past.json',
+						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/meals/past_deadline.json',
 						headers: {
 							'Content-Type': 'application/json'
 						},
@@ -1063,7 +1063,7 @@
         $scope.reset_controller();
     });
 
-	app.controller('mealController', function (Meal, Components, $scope) {
+	app.controller('mealController', function (Meals, $scope) {
 		$scope.meals = [];
 
 		$scope.cur_selected_meal_for_edit = "";
@@ -1083,69 +1083,11 @@
             return ($scope.tab === testTab);
         };
 
-        $scope.show_details = false;
-		$scope.allow_show_delete = false;
-		
-		$scope.components = [];
-		$scope.selected_components = [];
+        $scope.show_edit = false;
 
-		$scope.check_component_in_list = function (component) {
-            return (~$scope.selected_components.indexOf(component));
-        };
-
-		$scope.add_component_to_list = function (component) {
-			if(!$scope.check_component_in_list(component)) {
-				$scope.selected_components.push(component);
-				alert("Component added");
-			}
-		};
-		
-		$scope.remove_component_from_list = function (component) {
-			var index = $scope.selected_components.indexOf(component);
-
-			if(index != -1) {
-				$scope.selected_components.splice(index, 1);
-			};
-		};
-
-		$scope.get_components = function () {
-			Components.get_all().then(
-				function (promise) {
-					alert("win");
-					$scope.components = promise.data.components;
-					alert($scope.components);
-				}, function (errors) {
-					alert("error");
-				}
-			);
-		};
-		
-		$scope.get_selected_components = function() {
-			return $scope.selected_components;
-		};	
-
-		$scope.get_all_components = function () {
-			return $scope.components;
-		};
-
-		$scope.add_meal = function (meal_to_add) {
-            Meal.create(meal_to_add, $scope.selected_components).then(
-                function(promise) {
-					alert("meal created");
-                }, function (error) {
-                    alert("Failure: Unable to create meal.");
-                }
-            );
-        };
-
-
-
-		$scope.get_all = function () {
-			
-			$scope.meals = [];
-			
+		$scope.get_all_meals = function () {
 			//get all the meals
-			Meal.all().then(
+			Meals.all().then(
 				function (promise) {
 					$scope.meals = promise.data;
 				}, function (error) {
@@ -1155,13 +1097,10 @@
 		};
 
 		$scope.get_future = function () {
-
-            $scope.meals = [];
-
 			//get all future meals
-			Meal.future().then(
+			Meals.future().then(
                 function (promise) {
-                    $scope.meals = promise.data.future;
+                    $scope.meals = promise.data;
                 }, function (error) {
                     alert("Failure: Unable to get Meals from server");
                 }
@@ -1170,11 +1109,8 @@
 		};
 
 		$scope.get_past = function () {
-
-            $scope.meals = [];
-
 			//get all past meals
-			Meal.past().then(
+			Meals.past().then(
                 function (promise) {
                     $scope.meals = promise.data;
                 }, function (error) {

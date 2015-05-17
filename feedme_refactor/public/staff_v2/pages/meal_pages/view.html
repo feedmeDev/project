@@ -1,0 +1,15 @@
+<h2>View</h2>
+<div class="center">
+    <div class="customer_list_titles">
+   		<p class="meal_deadline">Deadline</p>
+    </div>
+
+	<div class="customer_for_edit" ng-repeat="meal in get_meals()">
+    	<p class="meal_deadline">{{meal.deadline}}</p>
+    	<img src="imgs/pencil.jpg" class="buttonHover" ng-click="set_focus_edit(meal)" />
+		</div>
+	</div>
+</div>
+
+
+

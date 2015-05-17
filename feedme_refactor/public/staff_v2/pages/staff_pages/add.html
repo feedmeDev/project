@@ -1,0 +1,17 @@
+<h2>Add Staff</h2>
+
+<form name="addStaffForm">
+	<hr>
+	Desired Name:
+	<input id="staff_name" type="text" placeholder="Name" ng-model="staff_to_add.name" required />
+	<br />
+	Desired Username:
+	<input id="staff_username" type="text" placeholder="Username" ng-model="staff_to_add.username" required></input>
+	Desired Password:
+	<input id="staff_password" type="text" placeholder="Password" ng-model="staff_to_add.password" required></input>
+	Confirm Password:
+	<input id="staff_password_confirm" type="text" placeholder="Password Confirmation" ng-model="staff_to_add.password_confirmation" required></input>
+
+	<input id="submit" type="submit" value="Add Staff" ng-click="add_staff(staff_to_add); staff_to_add = {}" />
+</form>
+

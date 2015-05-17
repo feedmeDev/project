@@ -1,0 +1,27 @@
+<h2>View</h2>
+<div class="center">
+    <div class="customer_list_titles">
+   		<p class="customer_name_title">Name</p>
+    	<p class="customer_updates_title">Update</p>
+    </div>
+
+	<div class="customer_for_edit" ng-repeat="customer in customers">
+    	<p class="customer_name">{{customer.name}}</p>
+    	<img src="imgs/pencil.jpg" class="buttonHover" ng-click="set_focus_edit(customer)" />
+		<div ng-show="get_show_edit(customer.id)">
+			<form >
+		    	<hr>
+				<p>Desired Name:</p>
+				<input id="textField" type="text" ng-model="customer.name" required />
+		    	<br />
+		    	<p>Desired Username:</p>
+		    	<textarea id="textArea" ng-model="customer.username" required></textarea>
+			
+		   		<input id="submit" type="submit" value="Save Changes" ng-click="edit_customer(customer); get_all_customers()" />
+			</form>
+		</div>
+	</div>
+</div>
+
+
+

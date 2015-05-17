@@ -19,8 +19,8 @@ class AttendancesController < ApplicationController
     #how many have indicated
     @indicated = attendances.where(['meal_id = ?', meal]).count
 
-    #how many active students are there
-    @total_students = Person.where(['staff = ? AND still_active = ?', false, true]).count
+    #how many active customers are there
+    #@total_customers = Person.where(['staff = ? AND still_active = ?', false, true]).count
 
     #how many have indicated going
     @going = attendances.where(['going = ?', true]).count
@@ -46,7 +46,7 @@ class AttendancesController < ApplicationController
 
     #end summarise components
 
-    render json: {:report =>{:total_students => @total_students, :indicated => @indicated, :going => @going, :summary => @summary}}
+    render json: {:report =>{:indicated => @indicated, :going => @going, :summary => @summary}}
   end
 
 

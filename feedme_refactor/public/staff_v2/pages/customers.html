@@ -1,57 +1,28 @@
-<div id="sub_page_container">
+<h2>Customers</h2>
 
-	<div ng-controller="CTRLPersonController as customer_creator">
+<!--put sub menu here using tab -->
+<!-- sub menu items are ng hide on their own tab index-->
 
-		<form ng-submit="customer_creator.create_customer()">
-		
-			<h2>Add customer</h2>
-			<hr>
-			Desired Name:
-			<input id="textField" type="text" placeholder="Name" name="name" ng-model="customer_creator.name"required />
-			<!-- {{customer_creator.name}} -->
+<nav id="sub_set_pages">
+	 <ul class="nav">
+     	<li class="nav">
+        	<a 
+          	class="subNavList"
+            href ng-click="setTab(0); get_all_customers()">View Components</a>
+        </li>
+        <li class="nav">
+            <a
+            class="subNavList" 
+            href ng-click="setTab(1)">Add Component</a>
+        </li>
+	</ul>
+</nav>
 
-			Desired Username:
-			<input id="textField" type="text" placeholder="Username" name="username" ng-model="customer_creator.username" required />
-			<!--{{customer_creator.username}} -->
-
-			Desired Password:
-			<input id="textField" type="password" placeholder="Password" name="password" ng-model="customer_creator.password" required/>
-			<!-- {{customer_creator.password}} -->
-			
-			Confirm Password:
-			<input id="textField" type="password" placeholder="Confirm Password" name="password_confirmation" ng-model="customer_creator.password_confirmation" required />
-			<!-- {{customer_creator.password_confirmation}} -->
-			
-			<input id="submit" type="submit" value="Add customer" />
-
-		</form>
-	
-
-		<div>
-			<button ng-click="customer_creator.view_all_customers()">View customers</button>
-			<table class="center">
-				<tr>
-					<th>ID</th>
-					<th>Name</th>
-					<th>Username</th>
-					<th>Active</th>
-					<th>Staff</th>
-					<th>Update</th>
-					<th>Deactivate</th>
-				</tr>
-
-				<tr ng-repeat="person in customer_creator.get_people()">
-					<td>{{person.id}}</td>
-					<td>{{person.name}}</td>
-					<td>{{person.username}}</td> 
-					<td>{{person.still_active}}</td> 
-					<td>{{person.staff}}</td> 
-					<td>Update</td>
-					<td>Delete</td>
-				</tr>
-			</table>	
-		</div>
-
+<div class="show_sub_pages">
+	<div ng-show="check_tab_same(0)" ng-include="'pages/customer_pages/view.html'">
 	</div>
+
+	<div ng-show="check_tab_same(1)" ng-include="'pages/customer_pages/add.html'">
+    </div>
 
 </div>

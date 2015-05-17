@@ -30,7 +30,7 @@ class MealsController < ApplicationController
   def get_past_meals
 
 
-    @past_meals = Meal.order(date_and_time: :asc).where(:conditions=>['date_and_time < ?', DateTime.now]).to_a
+    @past_meals = Meal.order(date_and_time: :asc).where('date_and_time < ?', DateTime.now).to_a
 
     render json: @past_meals
 

@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
-  resources :indications
+#  resources :indications
 
-  resources :attendances
+#  resources :attendances
 
-  resources :component_meals
+#  resources :component_meals
 
 #  resources :meals
 
-  resources :components
+#  resources :components
 
-  resources :people
+#  resources :people
 
   
   #custom routes
@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   put '/person' => 'people#update'
 
   #meal controller
+  #get all meals
+  get '/meals' => 'meals#index'
   #get meals past deadline
   get '/meals/past_deadline' => 'meals#get_meals_past_deadline'
   #get future meals
@@ -47,13 +49,13 @@ Rails.application.routes.draw do
   get '/meals/date' => 'meals#get_meals_on_date'
   
   #get specific meal
-  get '/meals' => 'meals#show'
+  get '/meal' => 'meals#show'
   #create a meal
-  post '/meals' => 'meals#create'
+  post '/meal' => 'meals#create'
   #update a meal
-  put '/meals' => 'meals#update'
+  put '/meal' => 'meals#update'
   #delete a meal
-  delete '/meals' => 'meals#destroy'
+  delete '/meal' => 'meals#destroy'
 
   #add a list of components to a meal
   post '/meals/components' => 'meals#set_components_for_meal'
