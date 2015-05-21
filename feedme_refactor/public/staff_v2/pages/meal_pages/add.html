@@ -57,11 +57,12 @@
 				ng-repeat="component in get_all_components()"
 				>
 				<p 
-					ng-click="add_component_to_list(component)">
+					ng-click="add_component_to_list(component.id)">
 					{{component.name}}
 				</p>
 			</div>
 		</div>
+{{ get_selected_components() }}
 		<table 
 			id="remove_component_from_meal"
 			>
@@ -69,7 +70,8 @@
 				Components currently in Meal.
 			</th>
 			<tr 
-				ng-repeat="component in selected_components"
+				ng-repeat="component in components"
+				ng-show="check_component_in_list(component.id)"
 				>
 				<td
 					class="component_name"
@@ -78,11 +80,11 @@
 				</td>
 				<td
 					class="remove"
-					ng-click="remove_component_from_list(component)"
+					ng-click="remove_component_from_list(component.id)"
 					>
 					Remove From Meal
 				</td>
 			</tr>
-		</div>
+		</table>
 	</div>
 </form>

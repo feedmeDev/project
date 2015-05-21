@@ -1,8 +1,8 @@
 class Meal < ActiveRecord::Base
 
 #relations 
-has_many :components_meal
-has_many :components, through: :components_meal
+has_many :component_meal
+has_many :components, through: :component_meal
 
 belongs_to :attendance
 

@@ -13,7 +13,7 @@ class MealsController < ApplicationController
   # GET /meals/future.json
   def get_future_meals
     
-    number_meals_to_get = 7
+    number_meals_to_get = 100
 
     if params[:number_of_meals].present?
       number_meals_to_get = params[:number_of_meals]
@@ -60,16 +60,14 @@ class MealsController < ApplicationController
       end
     end
 
-    #possibly put components addition here
+	@new_meal = Meal.find(@meal.id)
+
+	#possibly put components addition here
     @list_components = Component.find(params[:component_list])
 
-    @meal.components.destroy_all
-
     @list_components.each do | lc |
-      @meal.components << lc
+      @new_meal.components << lc
     end
-
-
   end
   
   # PATCH/PUT /meals

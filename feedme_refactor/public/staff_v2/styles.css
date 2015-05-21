@@ -2,19 +2,65 @@ body {
 	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
 	margin: 0;
 	padding: 0;
-	color: #000;
-	background-color: #066E95;
-	background-image: linear-gradient(90deg, transparent 50%, #388BAA 50%);
-	background-size: 120px 120px;
+	/* IE10 Consumer Preview */ 
+background-image: -ms-radial-gradient(center, circle farthest-corner, #0992C2 0%, #003A57 100%);
+
+/* Mozilla Firefox */ 
+background-image: -moz-radial-gradient(center, circle farthest-corner, #0992C2 0%, #003A57 100%);
+
+/* Opera */ 
+background-image: -o-radial-gradient(center, circle farthest-corner, #0992C2 0%, #003A57 100%);
+
+/* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-gradient(radial, center center, 0, center center, 505, color-stop(0, #0992C2), color-stop(1, #003A57));
+
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-radial-gradient(center, circle farthest-corner, #0992C2 0%, #003A57 100%);
+
+/* W3C Markup, IE10 Release Preview */ 
+background-image: radial-gradient(circle farthest-corner at center, #0992C2 0%, #003A57 100%);
+
+	background-attachment: fixed;
+	
 }
 
+html {
+	height: 100%;
+}
+
+.login_header_title {
+	font-size: 80px;
+	margin: 0px;
+	padding: 0px;
+	color: white;
+}
+
+.login_header_text {
+	font-size: 40px;
+	margin: 0px;
+	padding: 0px;
+	color: deepSkyBlue;	
+}
+
+.login_header {
+	height: 300px;
+	width: 900px;
+	margin: 0 auto;
+	margin-top: 150px;
+}
+
+.login_header_left {
+	float: left;
+}
+
+.login_header_right {
+	float: right;
+	width: 500px;
+	text-align: center;
+}
 header h2 {
 	color: #066E95;
 }
-
-/*div {
-	border: 1px solid black;
-}*/
 
 #form_content_holder_for_create_meal{
 	float: left;
@@ -144,25 +190,26 @@ header {
 }
 
 .loginContainer {
-	background-color: #E2D893;
-	width: 300px;
+	width: 400px;
 	height: 280px;
 	margin: 0 auto;
-	margin-top: 100px;
-
-
+	margin-top: 50px;
 	border-radius: 10px 10px 10px 10px;
 
 
 }
 
+.center {
+	margin: 0 auto;
+}
+
 .loginContainerHeader {
 	border-radius: 10px 10px 0px 0px;
-	width: 300px;
+	width: 400px;
 	height: 50px;
 	margin: 0 auto;
-	background-color: #A79E65;
 	text-align: center;
+	color: white;
 	margin-bottom: 10px;
 }
 
@@ -170,19 +217,21 @@ header {
     margin-left: 45px;
     margin-top: 0px;
     margin-bottom: 0px;
+	display: inline;
 }
 
 .loginDetails {
 
 
-    width: 200px;
+
+    width: 250px;
     font-size: 20px;
     height: 30px;
 
     margin-top: 3px;
     padding-left: 10px;
 
-    margin-left:  40px;
+    margin-left:  10px;
 
 }
 
@@ -196,8 +245,6 @@ input:invalid {
 
 .loginDetails :focus {
 	outline: none;
-    /*border-color: #9ecaed;
-    box-shadow: 0 0 10px #9ecaed;*/
 }
 
 input[type=text]:focus, textarea:focus {
@@ -210,78 +257,30 @@ input[type=password]:focus, textarea:focus {
   border: 1px solid rgba(81, 203, 238, 1);
 }
 
-
-
-
-/*
-.loginButton{
-	margin-top: 20px;
-	font-size: 20px;
-	width: 200px;
-	height: 45px;
-
-	text-align: center;
-
-
-
-	margin-left: 33px;
-background: #65a9d7;
-background: #65a9d7;
-}*/
-
-
-
-
-
-
 .loginButton {
-   border-top: 1px solid #96d1f8;
-   background: #65a9d7;
-   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
-   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
-   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
-   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
-   background: -o-linear-gradient(top, #3e779d, #65a9d7);
-   padding: 5px 10px;
-   -webkit-border-radius: 8px;
-   -moz-border-radius: 8px;
-   border-radius: 8px;
-   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   box-shadow: rgba(0,0,0,1) 0 1px 0;
-   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   border-radius: 10px 10px 10px 10px;
+   border: 1px solid white;
+   background-color: transparent;
    color: white;
    width: 200px;
    font-size: 30px;
    margin-top: 20px;
-   margin-left: 47px;
-   font-family: Georgia, serif;
+   margin-left: 100px;
+   font-family: 'Georgia', 'serif';
    text-decoration: none;
    vertical-align: middle;
-   border: none;
 
    }
 .loginButton:hover {
-   border-top-color: #28597a;
-   background: #28597a;
+   opacity: 80%;
    color: #ccc;
-   }
-.loginButton:active {
-   border-top-color: #1b435e;
-   background: #1b435e;
-   }
-
-
-/*
-.logoutDisplay {
-	background-color: #E2D893;
-	width: 870px;
-	margin: 0 auto;
-	box-shadow: 3px 3px 2px black;
-	text-align: right;
-
+   cursor: pointer;
 }
-*/
+
+.loginButton:active {
+   background: #1b435e;
+}
+
 
 .logoutDisplay {
 	background-color: #E2D893;

@@ -62,7 +62,7 @@ Rails.application.routes.draw do
   #remove a component from a meal
   delete '/meals/component' => 'meals#remove_component_from_meal'
   #get components for meal
-  get '/meals/component' => 'meals#get_components_for_meal'
+  get '/meals/components' => 'meals#get_components_for_meal'
 
   #attendances controller
   #get specific persons attendances for a meal

@@ -54,7 +54,7 @@
 					//the request with method, url, content-type, and data needed for a login
 					var req =  {
 						method: 'POST', 
-						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/meals.json',
+						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/meal.json',
 						headers: {
 							'Content-Type': 'application/json'
 						},
@@ -1070,6 +1070,20 @@
 
 		//sub page views
         $scope.tab = 0;
+		
+
+		$scope.convertMealDate = function(unformatted_date_in) {
+			//get sub string
+			var substring_date = unformatted_date_in.substr(0, 10);
+
+			//reverse and join
+			var reversed_date = substring_date.split("-").reverse().join();
+
+			var ret = reversed_date.replace(/,/g, "/");
+
+			//return
+			return ret;
+		}
 
         $scope.setTab = function(newTab) {
             $scope.tab = newTab;
@@ -1113,7 +1127,6 @@
 				function (promise) {
 					alert("win");
 					$scope.components = promise.data.components;
-					alert($scope.components);
 				}, function (errors) {
 					alert("error");
 				}
@@ -1188,5 +1201,7 @@
 			return $scope.meals;
 		};
 	});
+	
+	app.controller("reportController");
 })
 ();

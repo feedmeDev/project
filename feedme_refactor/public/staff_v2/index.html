@@ -20,29 +20,47 @@
 			
 
 				<div ng-controller="CTRLLoginController as login_control">
-				
+					<div class="login_header" ng-hide="login_control.isLoggedIn()">
+						<div class="login_header_left">
+							<h1 class="login_header_title">FeedMe</h1>
+						</div>
+						<div class="login_header_right">
+							<h3 class="login_header_text">Helping you reduce your foodprint</h3>
+						</div>
+
+					</div>	
 					<!--login form
 						this is where the user logs in
 						only on screen if the user is not logged in-->
 					<div class="loginContainer" ng-hide="login_control.isLoggedIn()">
-						<div class="loginContainerHeader"><h2>Login</h2></div>
+
+						<div class="loginContainerHeader"><h3>Sign in to your account</h3></div>
 						<form id="login_form_homepage" name="login_form" ng-submit="login_control.login()">
-								<p class="loginText">Username: </p>
-								<input type="text" name="username" 
-								id="login_username" 
-								class="loginDetails"
-								placeholder="Username"
-								ng-model="login_control.username" required>
-								<br />
-								<br />
-								<p class="loginText"> Password: </p>
-								<input type="password" name="password" 
-								id="login_password" 
-								class="loginDetails"
-								placeholder="Password"
-								ng-model="login_control.password" required>
-								<br />
-								<input type="submit" value="Login" class="loginButton">
+								
+								<table class="center">
+								<tr>
+									<td>
+									<input type="text" name="username" 
+                                id="login_username" 
+                                class="loginDetails"
+                                placeholder="Username"
+                                ng-model="login_control.username" required>
+
+									</td
+								</tr>
+								<tr>
+
+									<td>
+                                <input type="password" name="password" 
+                                id="login_password" 
+                                class="loginDetails"
+                                placeholder="Password"
+                                ng-model="login_control.password" required>
+									</td>
+								</tr>
+
+								</table>		
+								<input type="submit" value="Sign in" class="loginButton">
 						</form>
 					</div>
 	

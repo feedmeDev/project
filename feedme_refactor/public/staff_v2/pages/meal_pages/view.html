@@ -5,7 +5,7 @@
     </div>
 
 	<div class="customer_for_edit" ng-repeat="meal in get_meals()">
-    	<p class="meal_deadline">{{meal.deadline}}</p>
+    	<p class="meal_deadline">{{ convertMealDate(meal.deadline) }}</p>
     	<img src="imgs/pencil.jpg" class="buttonHover" ng-click="set_focus_edit(meal)" />
 		</div>
 	</div>
