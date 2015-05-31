@@ -1,12 +1,20 @@
 <h2>View</h2>
-<div class="center">
-    <div class="component_list_titles">
-   		<p class="component_name_title">Name</p>
-    	<p class="component_updates_title">Update</p>
-    </div>
 
+<table class="tableView">
+
+
+
+<tr>
+   	<th>	<p class="component_name_title">Name</p> </th>
+    <th>	<p class="component_updates_title">Update</p> </th>
+</tr>
+
+<tr>
 	<div class="component_for_edit" ng-repeat="component in components">
     	<p class="component_name">{{component.name}}</p>
+
+
+
     	<img src="imgs/pencil.jpg" class="buttonHover" ng-click="set_focus_edit(component)" />
 		<div ng-show="get_show_edit(component.id)" ng-repeat-end>
 			<form >
@@ -21,7 +29,6 @@
 			</form>
 		</div>
 	</div>
-</div>
-
-
+</tr>
+</table>
 

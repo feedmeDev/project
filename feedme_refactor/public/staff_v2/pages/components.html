@@ -1,22 +1,25 @@
-<h2>Components</h2>
+	<h1 class="bigLetter">C</h1>
+	<h1 class="restOfLetters">omponents</h1>
+
+
+
 
 <!--put sub menu here using tab -->
 <!-- sub menu items are ng hide on their own tab index-->
-
-<nav id="sub_set_pages">
-	 <ul class="nav">
-     	<li class="nav">
+<div class="subMenu">
+	 <ul class="">
+     	<li class="">
         	<a 
-          	class="subNavList"
+          	class="subButton"
             href ng-click="setTab(0); get_all_components()">View Components</a>
         </li>
-        <li class="nav">
+        <li class="">
             <a
-            class="subNavList" 
+            class="subButton" 
             href ng-click="setTab(1)">Add Component</a>
         </li>
 	</ul>
-</nav>
+</div>
 
 <div class="show_sub_pages">
 	<div ng-show="check_tab_same(0)" ng-include="'pages/component_pages/view.html'">

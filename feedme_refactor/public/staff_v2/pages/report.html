@@ -1,4 +1,12 @@
-<h2>Report</h2>
+    <h1 class="bigLetter">R</h1>
+    <h1 class="restOfLettersReport">eports</h1>
+<br><br>
+
+
+
+
+
+
 
 <div 
 	id="report_page_content_container">
@@ -10,24 +18,61 @@
 	<div
 		class="meals_container"
 		>
-		<table
-			id="reports_table"
+		<div
+			class="meals_display_container"
 			>
-			<tr
-				ng-repeat-start="meal in get_meals()"
+			<div
+				class="individual_meal"
+				ng-repeat="meal in meals"
 				>
-				<td>
-					{{ meal.date_and_time }}
-				</td>
-				<td
-					ng-click="view_report_for(meal.id)"
+				<table
+					class="report_for_meal"
 					>
-					View Report
-				</td>
-			</tr>
-			<tr 
-				ng-repeat-end
-				>
-				end repeat
-			</tr>
+					<th
+						class="clickalbe_report_tr"
+						ng-click="setTab(meal.id)"
+						>
+						<p> {{ convertMealDateTime(meal.date_and_time) }} </p>
+					</th>
+					<tr
+						class="report_data"
+						ng-show="show(meal.id)"
+						>
+						<td>
+							Number of people that have indicated:
+						<td>
+							{{ current_report.indicated }}
+						</td>
+					</tr>
+                    <tr
+                        class="report_data"
+                        ng-show="show(meal.id)"
+                        >
+                        <td>
+                            Number of people that are going:
+                        <td>
+                            {{ current_report.going }}
+                        </td>
+                    </tr>
+					<th
+						ng-show="show(meal.id)"
+						>
+						components
+					</th>
+                    <tr
+                        class="report_data"
+                        ng-show="show(meal.id)"
+						ng-repeat="component_report in current_report.summary"
+                        >
+                        <td>
+                            {{ component_report.component_request_count.component.name }}
+                        <td>
+                            {{ component_report.component_request_count.count }}
+                        </td>
+                    </tr>
+
+				</table>
+			</div>
+		</div>
+	</div>
 </div>

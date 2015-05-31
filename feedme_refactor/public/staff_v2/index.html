@@ -2,14 +2,33 @@
 <html ng-app="feedme-web">
 	<head>
 		<title>Feedme</title>
-		<script src="angular.min.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
-		<script src="angular-resource.js"></script>
-		<script src="app.js"></script>
 		
-		<link rel="stylesheet" type="text/css" href="styles.css" />
+		<!-- Stylesheets go here -->
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+		<link rel="stylesheet" type="text/css" href="css/datetimepicker.css" />
+
+		                    <!-- jQuery goes here -->
+		<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+
+
+
+     <!-- datetimepicker -->
+        <script type="text/javascript" src="javascript/jquery.datetimepicker.js"></script>
+
+
+
+		<!-- Angular gets called after jQuery -->
+		<script src="angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+        <script src="angular-resource.js"></script>
+
+        <script src="app.js"></script>
 	</head>
 		<body>
+
+
+
+
 			<!--login controller
 				if the user is logged in the they are able to see the page
 				if they are not logged in then they will see the login form-->
@@ -35,7 +54,7 @@
 					<div class="loginContainer" ng-hide="login_control.isLoggedIn()">
 
 						<div class="loginContainerHeader"><h3>Sign in to your account</h3></div>
-						<form id="login_form_homepage" name="login_form" ng-submit="login_control.login()">
+						<form onsubmit="revealMenu()" id="login_form_homepage" name="login_form" ng-submit="login_control.login()">
 								
 								<table class="center">
 								<tr>
@@ -46,7 +65,7 @@
                                 placeholder="Username"
                                 ng-model="login_control.username" required>
 
-									</td
+									</td>
 								</tr>
 								<tr>
 
@@ -60,63 +79,36 @@
 								</tr>
 
 								</table>		
-								<input type="submit" value="Sign in" class="loginButton">
+								<input type="submit" value="Sign in" class="loginButton" onclick="revealMenu()" >
 						</form>
 					</div>
 	
 					<!--page controller
 						controls what page is on the screen-->
 					<div ng-controller="CTRLPageController as page_control" ng-show="login_control.isLoggedIn()">
+					
+						<div class="menuTop">
+							<div class="headerImage"><img src="FeedMeTitle.png"></div>
+								<div id="box2">
+									<ul id="menu2">
+			
+										<li><a href="#customers">Customers</a></li>
+										<li><a href="#staff">Staff</a></li>
+										<li><a href="#report">Reports</a></li>
+										<li><a href="#components">Components</a></li>
+										<li><a href="#meals">Meals</a></li>
+								
+										<li class="logoutButton"><a ng-click="login_control.logout()" href="#">Sign Out</a></li>
 	
-	
-					<div class="logoutDisplay">
-							<a href="#" ng-click="login_control.logout()" class="logoutText">Log Out</a>
-						</div>
-	
-					<header>
-						<h2>FeedMe</h2>
-					</header>
-	
-	
-						<!--header
-							-->
-						
-	
-						<!--site navigation-->
-						<nav id="set_pages">
-							<ul class="nav">
-								<li class="nav">
-									<a 
-									class="navList"
-									href="#customers">Customers</a>
-								</li>
-								<li class="nav">
-									<a
-									class="navList" 
-									href="#staff">Staff</a>
-								</li>
-								<li class="nav">
-									<a 
-									class="navList"
-									href="#meals">Meals</a>
-								</li>
-								<li class="nav">
-									<a 
-									class="navList"
-									href="#components">Components</a>
-								</li>
-								<li class="nav">
-									<a 
-									class="navList"
-									href="#report">Report</a>
-								</li>
-							</ul>
-						</nav>
+									</ul>
+								</div>
+							</div>					
+
 	
 	
 						<!--all of this is the sub page that is displayed to the user for a subset of tasks-->
 						<div class="content">
-							
+
 							<div ng-view> </div>
 
 						</div>
@@ -124,8 +116,24 @@
 				</div>
 
 
+
 			<!-- End of the backdrop -->
 			</div>
 
+
+
 	</body>
+
+            <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.4/TweenMax.min.js'></script>
+
+  <script type="text/javascript" src="javascript/menu-slide.js"></script>
+
+
+
+
+
+
+
+
+
 </html>

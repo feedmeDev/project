@@ -49,8 +49,6 @@
 				//returns a promise of a request return to create a meal
 				function (meal_in, component_listIn) {
 					
-					alert("start req");
-
 					//the request with method, url, content-type, and data needed for a login
 					var req =  {
 						method: 'POST', 
@@ -337,7 +335,7 @@
 					//the request with method, url, content-type, and data needed for a login
 					var req =  {
 						method: 'GET', 
-						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/get_report.json',
+						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/report.json',
 						headers: {
 							'Content-Type': 'application/json'
 						},
@@ -844,7 +842,7 @@
 
             Person.get_all_customers().then(
                 function (promise) {
-					alert("Customers got");
+					//alert("Customers got");
                     $scope.customers = promise.data;
 
                 }, function (error) {
@@ -859,10 +857,10 @@
 			return $scope.customers;
 		};
 
-		$edit_customer = function (customer) {
+		$scope.edit_customer = function (customer) {
 			Person.edit(customer).then(
 				function(promise) {
-					alert("edited");
+					alert("Customer edited");
 					$scope.get_all_customers();
 
 				}, function (error) {
@@ -872,33 +870,15 @@
 			);
 		};
 
-		$add_customer = function (customer) {
+		$scope.add_customer = function (customer) {
 			Person.create_customer(customer).then(
 				function(promise) {
-					alert("Customer created \nname = " + promise.data.name + "\nusername = " + promise.data.username);
+					//alert("Customer created \nname = " + promise.data.name + "\nusername = " + promise.data.username);
 				}, function (error) {
 					alert("Failure: Unable to create customer.");
 				}
 			);
 		};
-
-		//edit
-        $scope.edit_customer = function(customer) {
-            Person.edit(customer).then(
-                function(promise) {
-
-                    $scope.show_edit = false;
-                    alert("Customer updated.");
-                    $scope.get_all_customers();
-
-                }, function (error) {
-
-                    alert("Failure: Unable to update.");
-                    $scope.get_all_customers();
-                }
-            );
-
-        };
 
         $scope.set_focus_edit = function (customer){
 
@@ -970,7 +950,7 @@
         $scope.get_all_staff = function() {
 			Person.get_all_staff().then(
                 function (promise) {
-                    alert("Staff got");
+                    //alert("Staff got");
                     $scope.staff = promise.data;
 
                 }, function (error) {
@@ -988,7 +968,7 @@
         $edit_staff = function (staff) {
             Person.edit(staff).then(
                 function(promise) {
-                    alert("edited");
+                    alert("Staff edited");
                     $scope.get_all_staff();
 
                 }, function (error) {
@@ -1085,6 +1065,25 @@
 			return ret;
 		}
 
+		$scope.convertMealDateTime = function(unformatted_date_in) {
+            //get sub string
+            var substring_date = unformatted_date_in.substr(0, 10);
+
+            //reverse and join
+            var reversed_date = substring_date.split("-").reverse().join();
+
+            var date_str = reversed_date.replace(/,/g, "/");
+
+			//get time substring
+			var substring_time = unformatted_date_in.substr(12, 17);
+
+			var ret = date_str + " " + substring_time;
+
+            //return
+            return ret;
+        }
+
+
         $scope.setTab = function(newTab) {
             $scope.tab = newTab;
         };
@@ -1125,10 +1124,10 @@
 		$scope.get_components = function () {
 			Components.get_all().then(
 				function (promise) {
-					alert("win");
+					//alert("win");
 					$scope.components = promise.data.components;
 				}, function (errors) {
-					alert("error");
+					//alert("error");
 				}
 			);
 		};
@@ -1144,7 +1143,7 @@
 		$scope.add_meal = function (meal_to_add) {
             Meal.create(meal_to_add, $scope.selected_components).then(
                 function(promise) {
-					alert("meal created");
+					alert("Meal created.");
                 }, function (error) {
                     alert("Failure: Unable to create meal.");
                 }
@@ -1200,8 +1199,99 @@
 		$scope.get_meals = function() {
 			return $scope.meals;
 		};
+
+		//reset the controller
+		$scope.reset_controller = function () {
+			$scope.get_all();
+		};
+
+		$scope.reset_controller();
 	});
 	
-	app.controller("reportController");
+	app.controller('reportController', function (Report, Meal, $scope) {
+		//meals available for report
+		$scope.meals = [];
+
+		//current report object, delete on hide
+		$scope.current_report = "";
+		
+		$scope.tab = "";
+		
+		//show hide
+		$scope.setTab = function (meal_id) {
+			if($scope.tab === meal_id) {
+				$scope.tab = "";
+			}
+			else {
+				$scope.tab = meal_id;
+				$scope.get_report_for(meal_id);
+			}
+		};
+
+		$scope.show = function (meal_id) {
+			return (meal_id === $scope.tab);
+		};
+
+		//get meals
+		$scope.get_meals_from_server = function () {
+			Meal.all().then(
+				function (promise) {
+					$scope.meals = promise.data;
+					//alert($scope.meals);
+				}, function (error) {
+					alert("Error: unable to get meals from server");
+				}
+			);
+		};
+
+		//get report for meal (meal_id)
+		$scope.get_report_for = function (meal_id) {
+			
+			//delete the old report
+			$scope.current_report = "";
+			
+			Report.get_report(meal_id).then(
+				function (promise) {
+					$scope.current_report = promise.data.report;
+				}, function (error) {
+					alert("Error: contact your system administrator");
+				}
+			);
+		};
+
+		$scope.get_meals_from_server();
+		
+		$scope.convertMealDate = function(unformatted_date_in) {
+            //get sub string
+            var substring_date = unformatted_date_in.substr(0, 10);
+
+            //reverse and join
+            var reversed_date = substring_date.split("-").reverse().join();
+
+            var ret = reversed_date.replace(/,/g, "/");
+
+            //return
+            return ret;
+        }
+
+        $scope.convertMealDateTime = function(unformatted_date_in) {
+            //get sub string
+            var substring_date = unformatted_date_in.substr(0, 10);
+
+            //reverse and join
+            var reversed_date = substring_date.split("-").reverse().join();
+
+            var date_str = reversed_date.replace(/,/g, "/");
+
+            //get time substring
+            var substring_time = unformatted_date_in.substr(11, 5);
+
+            var ret = date_str + " " + substring_time;
+
+            //return
+            return ret;
+        }
+
+	});
 })
 ();
