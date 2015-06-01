@@ -1,13 +1,18 @@
-<h2>View</h2>
-<div class="center">
-    <div class="customer_list_titles">
-   		<p class="meal_deadline">Deadline</p>
-    </div>
-
+<div class="viewContainer">
+<table class="tableView">
+	<tr>
+		<th>Deadline</th>
+	</tr>
+</table>
+	
 	<div class="customer_for_edit" ng-repeat="meal in get_meals()">
-    	<p class="meal_deadline">{{ convertMealDate(meal.deadline) }}</p>
-    	<img src="imgs/pencil.jpg" class="buttonHover" ng-click="set_focus_edit(meal)" />
-		</div>
+		<table class="tableView">
+			<tr>
+				<td>
+    				<p class="meal_deadline">{{ convertMealDate(meal.deadline) }}</p>
+				</td>
+			</tr>
+		</table>	
 	</div>
 </div>
 

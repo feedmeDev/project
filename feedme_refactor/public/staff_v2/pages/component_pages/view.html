@@ -1,34 +1,73 @@
-<h2>View</h2>
+<div class="viewContainer">
 
+<div>
 <table class="tableView">
-
-
-
-<tr>
-   	<th>	<p class="component_name_title">Name</p> </th>
-    <th>	<p class="component_updates_title">Update</p> </th>
-</tr>
-
-<tr>
-	<div class="component_for_edit" ng-repeat="component in components">
-    	<p class="component_name">{{component.name}}</p>
-
-
-
-    	<img src="imgs/pencil.jpg" class="buttonHover" ng-click="set_focus_edit(component)" />
-		<div ng-show="get_show_edit(component.id)" ng-repeat-end>
-			<form >
-		    	<hr>
-				<p>Desired Name:</p>
-				<input id="textField" type="text" ng-model="component.name" required />
-		    	<br />
-		    	<p>Desired Description:</p>
-		    	<textarea id="textArea" ng-model="component.description" required></textarea>
-			
-		   		<input id="submit" type="submit" value="Save Changes" ng-click="edit_component(component); get_all_components()" />
-			</form>
-		</div>
-	</div>
-</tr>
+	<tr>
+   		<th>
+				Name
+		</th>
+	    <th>
+				Update
+		</th>
+	</tr>
 </table>
-
+</div>
+<div
+	ng-repeat="component in components"
+	>
+<table
+	class="tableView"
+	>
+	<tr
+		class="component_name"
+		>
+		<td>
+			{{component.name}}
+		</td>
+		<td
+			class="component_updates"
+			>
+			<img
+				src="images/update.png"
+				class="buttonHover"
+				ng-click="set_focus_edit(component)" />
+		</td>
+	</tr>
+	<tr
+		class="component_name"
+		ng-show="get_show_edit(component.id)"
+		>
+		<td>
+			<p>Name:</p>
+		</td>
+		<td>
+			<input 
+				id={{ "component" + component.id + "name" }}
+				type="text"
+				ng-model="component.name" 
+				required 
+				/>
+		</td>
+	</tr>
+	<tr
+        class="component_name"
+        ng-show="get_show_edit(component.id)"
+        >
+        <td>
+            <p>Description:</p>
+        </td>
+        <td>
+            <input 
+                id={{ "component" + component.id + "description" }}
+                type="text"
+                ng-model="component.description" 
+                required 
+                />
+        </td>
+    </tr>
+	<tr ng-show="get_show_edit(component.id)">
+		<td><input id="submit" type="submit" value="Save Changes" ng-click="edit_component(component); get_all_components()" /></td>
+	</tr>
+</table>
+</div>
+</div>

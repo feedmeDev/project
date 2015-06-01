@@ -23,8 +23,14 @@
         </li>
         <li class="">
             <a
-            class="subButton" 
-            href ng-click="setTab(1); get_components()">Add Meal</a>
+            class="subButton"
+			ng-click="get_components()" 
+            onclick="$('#addMealForm').lightbox_me({
+        		centered:true,
+        		onClose: function() {
+        			}
+    			});"
+				>Add Meal</a>
         </li>
 	</ul>
 </div>

@@ -1,17 +1,34 @@
-<h2>Add Component</h2>
+<h2>Add Customer</h2>
 
-<form name="addCustomerForm">
-	<hr>
-	Desired Name:
-	<input id="cust_name" type="text" placeholder="Name" ng-model="customer_to_add.name" required />
+<form name="addCustomerForm" id="addCustomerForm">
+<div id="addForm">
+
+<div id="addFormHeader">
+	<h2 class="addFormHeaderText">Add Customer</h2>
+	<p class="formInstructions">Please enter the customer details in the fields below</p>
+</div>
+<div id="formContentContainer">
+
+	<p class="formFieldName">Desired Name:</p>
+	<input class="formDetails" type="text" placeholder="Name" ng-model="customer_to_add.name" required />
 	<br />
-	Desired Username:
-	<input id="cust_username" type="text" placeholder="Username" ng-model="customer_to_add.username" required></input>
-	Desired Password:
-	<input id="cust_password" type="text" placeholder="Password" ng-model="customer_to_add.password" required></input>
-	Confirm Password:
-	<input id="cust_password_confirm" type="text" placeholder="Password Confirmation" ng-model="customer_to_add.password_confirmation" required></input>
+	<p class="formFieldName">Desired Username:</p>
+	<input class="formDetails" type="text" placeholder="Username" ng-model="customer_to_add.username" required></input>
+	<p class="formFieldName">Desired Password:</p>
+	<input class="formDetails" type="password" placeholder="Password" ng-model="customer_to_add.password" required></input>
+	<p class="formFieldName">Confirm Password:</p>
+	<input class="formDetails" type="password" placeholder="Password Confirmation" ng-model="customer_to_add.password_confirmation" required></input>
+</div>
 
-	<input id="submit" type="submit" value="Add Customer" ng-click="add_customer(customer_to_add); customer_to_add = {}" />
+<div id="addFormFooter">
+
+<button type="button" class="formConfirmButton close" ng-click="add_customer(customer_to_add); customer_to_add = {}">Confirm</button>
+
+<button id="closeFormButton" class="formCancelButton close">Cancel</button>
+
+
+
+</div>
+</div>
 </form>
 

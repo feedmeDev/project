@@ -97,32 +97,6 @@
 
 					return promise;
 				},
-
-			get_deadline_past:
-				//returns a promise of a request return that contains all meals for which the deadline has passed
-				function () {
-					
-					//the request with method, url, content-type, and data needed for a login
-					var req =  {
-						method: 'GET', 
-						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/meals/deadline_past.json',
-						headers: {
-							'Content-Type': 'application/json'
-						},
-					}
-
-					//creation of a promise
-					var promise = $http(req)
-						.success(function (data, status, headers, config) {
-							return data;
-						})
-						.error(function (data, status, headers, config) {
-							return data;
-						});
-
-					return promise;
-				},
-
             past:
                 //returns a promise of a request return that contains all meals for which the deadline has passed
                 function () {
@@ -1141,13 +1115,20 @@
 		};
 
 		$scope.add_meal = function (meal_to_add) {
-            Meal.create(meal_to_add, $scope.selected_components).then(
-                function(promise) {
-					alert("Meal created.");
-                }, function (error) {
-                    alert("Failure: Unable to create meal.");
-                }
-            );
+			if($scope.selected_components.length <= 0)
+			{
+				alert("you need to have some Components in the meal.");
+			}
+			else
+			{
+            	Meal.create(meal_to_add, $scope.selected_components).then(
+            	    function(promise) {
+						alert("Meal created.");
+            		}, function (error) {
+               	    	alert("Failure: Unable to create meal.");
+               		}
+            	);
+			}
         };
 
 
@@ -1234,7 +1215,7 @@
 
 		//get meals
 		$scope.get_meals_from_server = function () {
-			Meal.all().then(
+			Meal.past().then(
 				function (promise) {
 					$scope.meals = promise.data;
 					//alert($scope.meals);

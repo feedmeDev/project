@@ -1,48 +1,66 @@
-<form>
+<form name="addMealForm" id="addMealForm">
+<div id="addMealFormDiv">
+
+<div id="addFormHeader">
+	<h2 class="addFormHeaderText">Add Meal</h2>
+	<p class="formInstructions">Please enter the meal details in the fields below</p>
+</div>
+
+
+<div id="mealFormContentContainer">
+
+
+
 	<div 
 		id="date_time_location">
-		<p>
-			Date and Time of Meal
-			<br />
-			(must be after the deadline):
+		<p class="mealNote">Note: The date and time of meal must come after the meal deadline</p><br /> <br /> 
+
+		<p class="formFieldName">
+			Date and time of meal
 		</p>
 		<input 
 			id="meal_date" 
-			type="text" 
-			placeholder="Meal Date and Time" 
+			type="text"
+			class="mealdatetime"
+			placeholder="Meal late and time" 
 			name="date_and_time" 
 			ng-model="meal_to_add.date_and_time" 
 			required 
 			/>
-		<p>
-			Meal DeadLine:
+		<p class="formFieldName">
+			Meal deadLine:
 		</p>
 		<input 
 			id="meal_deadline" 
-			type="text" 
-			placeholder="Meal Deadline" 
+			type="text"
+			class="mealdatetime"
+			placeholder="Meal deadline" 
 			name="deadline" 
 			ng-model="meal_to_add.deadline" 
 			required 
 			/>
-		<p>
-			Meal Location
-		</p>
+		<p class="formFieldName">
+			Meal location:
+		</p><br />
 		<input 
-			class="need_date_time_picker"
 			id="meal_location" 
-			type="text" 
-			placeholder="Meal Location" 
-			name="location" 
+			type="text"
+			class="formDetails" 
+			placeholder="Meal location" 
+			name="formDetails" 
 			ng-model="meal_to_add.location" 
 			required 
 			/>
 		<br />
-		<input 
+		
+<!--
+			<input 
 			type="submit" 
 			value="Add" 
 			ng-click="add_meal(meal_to_add)" 
 			/>
+
+-->
 	</div>
 	<div 
 		id="component_addition"
@@ -50,8 +68,8 @@
 		<div 
 			id="add_components_to_meal"
 			>
-			<p>
-				Select some components to add.
+			<p class="formFieldName">
+				Select some components to add
 			</p>
 			<div 
 				ng-repeat="component in get_all_components()"
@@ -66,7 +84,7 @@
 			id="remove_component_from_meal"
 			>
 			<th>
-				Components currently in Meal.
+				Components currently in Meal
 			</th>
 			<tr 
 				ng-repeat="component in components"
@@ -86,6 +104,22 @@
 			</tr>
 		</table>
 	</div>
+	</div>
+
+<div id="addMealFormFooter">
+
+<button type="submit" class="formConfirmButton close" ng-click="add_meal(meal_to_add); ">Confirm</button>
+
+   <button id="closeFormButton" class="formCancelButton close">Cancel</button>
+
+
+
+</div>
+
+
+
+
+
 	<script type=text/javascript">
 		$('#meal_date').datetimepicker();
 	</script>

@@ -107,7 +107,7 @@ background-image: radial-gradient(circle farthest-corner at center, #0992C2 0%, 
 }
 
 #menu2 li.logoutButton {
-	font-size: 18px;
+	font-size: 20px;
 
 	display: block;
 	height: 25px;
@@ -281,22 +281,392 @@ background-image: radial-gradient(circle farthest-corner at center, #0992C2 0%, 
 	transition: color 1s ease;
 }
 
-.subMenu a {
+.buttonHover {
+	height: 40px;
+	width: 40px;
+	text-align: center;
+
+}
+
+.login_header_logo {
+	margin: 0 auto;
+	width: 700px;
+	margin-top: 40px;
+}
+
+.viewContainer {
+	padding-bottom: 30px;
+	width: 800px;
+	margin: 0 auto;
+	font-size: 20px;
+	font-family: 'Tahoma';
+	color: black;
+}
+
+.reportContainer {
+	width: 700px;
+	padding-top: 40px;
+	padding-bottom: 30px;
+	padding-left: 50px;
+	padding-right: 50px;
+
+}
+
+.tableView {
+	border: 1px solid black;
+	width: 300px;
+	table-layout: fixed;
+	margin: 0 auto;
+}
+
+.tableView td, th{
+	border: 1px solid black;
+	text-align: center;
+}
+
+.tableView td {
+	opacity: 0.8;
+
+}
+
+.instructions {
+	font-size: 20px;
+	opacity: 0.8;
+	font-family: 'Tahoma';
+
+}
+
+#domobj {
+	display: none;
+}
+
+#addForm {
+
+	min-width: 500px;
+	width: 600px;	
+	background-color: #08718E;
+	border-radius: 10px 10px 10px 10px;
+
+	/*box-shadow: 0px 0px 3px 3px #0A192C;*/
+	box-shadow: 0px 0px 2px 2px #84D8F4;
+
+}
+
+.addFormHeaderText {
+	padding: 0;
+	margin: 0;
+	font-family: 'Tahoma';
+	color: orange;
+}
+
+#addFormFooter {
+	width: 100%;
+	height: 45px;
+	background-color: #0A192C;
+	border-radius: 0px 0px 7px 7px;
+	padding-top: 10px;
+}
+
+#addFormHeader {
+	border-radius: 7px 7px 0px 0px;
+	height: 60px;
+	padding-left: 0px;
+	padding-top: 5px;
+	background-color: #08718E;
+	text-align: center;
+	opacity: 0.8;
+
+}
+
+.formInstructions {
+	padding: 0;
+	margin-bottom: 10px;
+
+	font-weight: bold;
+	color: #FAFFBD;
+
+
+
+	margin-top: 0px;
+	font-family: 'Tahoma';
+
+}
+
+.formFieldName {
+	font-family: 'Tahoma';
+	font-weight: bold;
+	font-size: 14px;
+	padding: 0;
+	margin-left: 0px;
+	display: inline;
+
+	color: black;
+
+	opacity: 0.6;
+
+}
+
+#formContentContainer {
+	padding-left: 30px;
+	padding-right: 40px;
+	padding-top: 10px;
+
+}
+
+.formDetails {
+	width: 100%;
+	height: 30px;
+	font-size: 16px;
+	font-family: 'Tahoma';
+	border-radius: 10px 10px 10px 10px;
+	outline: none;
+	border: none;
+	padding-left: 10px;
+	background-color: #FAFFBD;
+	margin-left: 100px;
+	margin-right: 50px;
+
+	margin: 0px;
+	/*border: 1px solid #0A192C;*/
+	border: 1px solid #FAFFBD;
+
+	margin-bottom: 10px;
+}
+
+.formDetails:focus {
+	box-shadow: 0 0 4px rgba(81, 203, 238, 1);
+	border: 1px solid rgba(81, 203, 238, 1);
+	outline: 0;
+}
+
+#addForm button {
+	float: right;
+	
+	height: 30px;
+	font-size: 18px;
+
+	margin-left: 20px;
+
+	border-radius: 20px 20px 20px 20px;
+	outline: none;
+	color: white;
+	width: 100px;
+
+	border: 0px solid white;
+}
+
+.formConfirmButton {
+	background-color: transparent;
+	margin-right: 20px;
+
+}
+
+.formCancelButton {
+	background-color: transparent;
+
+}
+
+#addForm button:hover {
+	cursor: pointer;
+
+}
+
+#addForm .formConfirmButton:hover {
+	background-color: transparent;
+	color: orange;
+	transition: color 1s ease;
+
+}
+
+#addForm .formCancelButton:hover {
+	background-color: transparent;
+	color: deepskyblue;
+	transition: color 1s ease;
+
+}
+
+#addForm textarea {
+    width: 100%;
+    height: 60px;
+    font-size: 16px;
+    font-family: 'Tahoma';
+    border-radius: 10px 10px 10px 10px;
+    outline: none;
+    border: none;
+    padding-left: 10px;
+	background-color: #FAFFBD;
+
+    margin-left: 100px;
+    margin-right: 50px;
+
+    margin: 0px;
+    /*border: 1px solid #0A192C;*/
+    border: 1px solid #FAFFBD;
+
+    margin-bottom: 10px;
+}
+
+#addForm textarea:focus {
+    box-shadow: 0 0 4px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+    outline: 0;
+}
+
+
+#addMealForm {
+
+    min-width: 700px;
+    width: 800px;
+    background-color: #08718E;
+    border-radius: 10px 10px 10px 10px;
+
+    /*box-shadow: 0px 0px 3px 3px #0A192C;*/
+    box-shadow: 0px 0px 2px 2px #84D8F4;
 
 }
 
 
+#addMealForm button {
+    float: right;
+
+    height: 30px;
+    font-size: 18px;
+
+    margin-left: 20px;
+
+    border-radius: 20px 20px 20px 20px;
+    outline: none;
+    color: white;
+    width: 100px;
+
+    border: 0px solid white;
+}
+
+#addMealForm textarea {
+    width: 100%;
+    height: 60px;
+    font-size: 16px;
+    font-family: 'Tahoma';
+    border-radius: 10px 10px 10px 10px;
+    outline: none;
+    border: none;
+    padding-left: 10px;
+	background-color: #FAFFBD;
+
+    margin-left: 100px;
+    margin-right: 50px;
+
+    margin: 0px;
+    /*border: 1px solid #0A192C;*/
+    border: 1px solid #FAFFBD;
+
+    margin-bottom: 10px;
+}
+
+#addMealForm textarea:focus {
+    box-shadow: 0 0 4px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+    outline: 0;
+}
+
+#addMealForm button:hover {
+    cursor: pointer;
+
+}
+
+#addMealForm .formConfirmButton:hover {
+    background-color: transparent;
+    color: orange;
+    transition: color 1s ease;
+
+}
+
+#addMealForm .formCancelButton:hover {
+    background-color: transparent;
+    color: deepskyblue;
+    transition: color 1s ease;
+
+}
+
+.mealdatetime {
+	    width: 100%;
+    height: 30px;
+    font-size: 16px;
+    font-family: 'Tahoma';
+    border-radius: 10px 10px 10px 10px;
+    outline: none;
+    border: none;
+    padding-left: 10px;
+	background-color: #FAFFBD;
+
+    margin-left: 50px;
+    margin-right: 50px;
+
+    margin: 0px;
+    /*border: 1px solid #0A192C;*/
+    border: 1px solid #FAFFBD;
+
+    margin-bottom: 10px;
 
 
 
+}
+
+#component_addition {
+	width: 300px;
+	float: right;
+    padding-left: 50px;
+    padding-right: 50px;
+	padding-bottom: 30px;
+	padding-top: 30px;
+}
+
+#date_time_location {
+	width: 300px;
+	float: left;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-bottom: 30px;
+	padding-top: 30px;
+}
+
+#addMealFormFooter {
+    width: 100%;
+    float: right;
+	height: 45px;
+    background-color: #0A192C;
+    border-radius: 0px 0px 7px 7px;
+    padding-top: 10px;
+	white-space: nowrap;
+	display: inline-block;
+}
+
+#mealFormContentContainer {
+	background-color: pink;
+	width: 100%;
+	height: auto;	
+}
+
+.location {
+	height: 30px;
+	width: 100%;
+	margin: 3px 3px 3px 3px;
+	font-family: 'Tahoma';
+}
+
+.mealNote {
+    font-family: 'Tahoma';
+    font-weight: bold;
+    font-size: 14px;
+    padding: 0;
+    margin-left: 0px;
+    display: inline;
+
+    color: #FAFFBD;
 
 
-
-
-
-
-
-
+    opacity: 0.8;
+}
 
 
 
@@ -395,13 +765,13 @@ background-image: radial-gradient(circle farthest-corner at center, #0992C2 0%, 
 }
 
 .loginContainerHeader {
-	border-radius: 10px 10px 0px 0px;
 	width: 400px;
 	height: 50px;
 	margin: 0 auto;
 	text-align: center;
 	color: white;
 	margin-bottom: 10px;
+	font-family: 'Tahoma';
 }
 
 .loginText {
@@ -413,7 +783,7 @@ background-image: radial-gradient(circle farthest-corner at center, #0992C2 0%, 
 
 .loginDetails {
 
-
+		font-family: 'Tahoma';
 
     width: 250px;
     font-size: 20px;
@@ -423,7 +793,8 @@ background-image: radial-gradient(circle farthest-corner at center, #0992C2 0%, 
     padding-left: 10px;
 
     margin-left:  10px;
-
+    border: none;
+    border-radius: 10px 10px 10px 10px;
 }
 
 
@@ -435,18 +806,27 @@ input:invalid {
 
 
 .loginDetails :focus {
-	outline: none;
+	  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+
+  border: 1px solid rgba(81, 203, 238, 1);
+
+  border-radius: 10px 10px 10px 10px;
+  outline: 0;
+
 }
 
-input[type=text]:focus, textarea:focus {
+input[type=text]:focus, textarea:focus, input:focus {
   box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+
   border: 1px solid rgba(81, 203, 238, 1);
+
+  border-radius: 10px 10px 10px 10px;
+  outline: 0;
+
 }
 
-input[type=password]:focus, textarea:focus {
-  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-  border: 1px solid rgba(81, 203, 238, 1);
-}
+
+
 
 .loginButton {
    border-radius: 10px 10px 10px 10px;

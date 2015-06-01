@@ -1,17 +1,34 @@
 <h2>Add Staff</h2>
 
-<form name="addStaffForm">
-	<hr>
-	Desired Name:
-	<input id="staff_name" type="text" placeholder="Name" ng-model="staff_to_add.name" required />
-	<br />
-	Desired Username:
-	<input id="staff_username" type="text" placeholder="Username" ng-model="staff_to_add.username" required></input>
-	Desired Password:
-	<input id="staff_password" type="text" placeholder="Password" ng-model="staff_to_add.password" required></input>
-	Confirm Password:
-	<input id="staff_password_confirm" type="text" placeholder="Password Confirmation" ng-model="staff_to_add.password_confirmation" required></input>
+<form name="addStaffForm" id="addStaffForm">
+<div id="addForm">
 
-	<input id="submit" type="submit" value="Add Staff" ng-click="add_staff(staff_to_add); staff_to_add = {}" />
+<div id="addFormHeader">
+	<h2 class="addFormHeaderText">Add Staff</h2>
+	<p class="formInstructions">Please enter the staff details in the fields below</p>
+</div>
+<div id="formContentContainer">
+
+	<p class="formFieldName">Desired Name:</p>
+	<input class="formDetails" type="text" placeholder="Name" ng-model="staff_to_add.name" required />
+	<br />
+	<p class="formFieldName">Desired Username:</p>
+	<input class="formDetails" type="text" placeholder="Username" ng-model="staff_to_add.username" required></input>
+	<p class="formFieldName">Desired Password:</p>
+	<input class="formDetails" type="password" placeholder="Password" ng-model="staff_to_add.password" required></input>
+	<p class="formFieldName">Confirm Password:</p>
+	<input class="formDetails" type="password" placeholder="Password Confirmation" ng-model="staff_to_add.password_confirmation" required></input>
+
+</div>
+
+<div id="addFormFooter">
+
+	<button type="button" class="formConfirmButton close" ng-click="add_staff(staff_to_add); staff_to_add = {}">Confirm</button>
+
+<button id="closeFormButton" class="formCancelButton close">Cancel</button>
+
+
+</div>
+</div>
 </form>
 

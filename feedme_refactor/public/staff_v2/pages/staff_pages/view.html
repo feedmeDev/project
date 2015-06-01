@@ -1,14 +1,17 @@
-<h2>View</h2>
-<div class="center">
-    <div class="staff_list_titles">
-   		<p class="staff_name_title">Name</p>
-    	<p class="staff_updates_title">Update</p>
-    </div>
-
-
+<div class="viewContainer">
+<table class="tableView">
+	<tr>
+		<th>Name</th>
+	</tr>
+</table>
 	<div class="staff_for_edit" ng-repeat="staff_member in get_staff()">
-    	<p class="staff_member_name">{{staff_member.name}}</p>
-    	<img src="imgs/pencil.jpg" class="buttonHover" ng-click="set_focus_edit(staff_member)" />
+    	<table class="tableView">
+			<tr>
+				<td>
+					<p class="staff_member_name">{{staff_member.name}}</p>
+				</td>
+		<!--
+    	<img src="images/update.png" class="buttonHover" ng-click="set_focus_edit(staff_member)" />
 		<div ng-show="get_show_edit(staff.id)">
 			<form >
 		    	<hr>
@@ -21,6 +24,9 @@
 		   		<input id="submit" type="submit" value="Save Changes" ng-click="edit_staff(staff_member); get_all_staff()" />
 			</form>
 		</div>
+		-->
+			</tr>
+		</table>
 	</div>
 </div>
 
