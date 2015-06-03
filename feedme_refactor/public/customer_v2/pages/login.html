@@ -1,0 +1,34 @@
+<form
+	id="login_form_homepage"
+	name="login_form"
+	>
+	<fieldset
+		>
+		<input
+			class="login_input"
+			type="text"
+			name="username"
+			id="login_username"
+			ng-model="customer.username"
+			required
+			>
+		<br/>
+		<br/>
+		<input
+			class="login_input"
+			type="password"
+			name="password"
+			id="login_password"
+			ng-model="customer.password"
+			required
+			>
+		<br/>
+		<br/>
+		<input
+			class="login_input"
+			type="submit"
+			value="Login"
+			ng-click="login(customer)"
+			>
+	</fieldset>
+</form>

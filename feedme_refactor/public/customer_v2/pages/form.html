@@ -1,0 +1,61 @@
+<div
+    class="components_for_meal"
+    ng-show="is_selected_meal()"
+    >
+    <p
+        class="meal_date_time"
+        >
+        {{ selected_meal.date_and_time }}
+    </p>
+    <p
+        class="meal_deadline"
+        >
+        {{ selected_meal.deadline }}
+    </p>
+    <img
+        src="images/close.png"
+        alt="close"
+        ng-click="reset_selected_meal()"
+        />
+    <form
+        ng-init="going = true"
+        ng-submit="indicate(selected_meal.id, going)"
+        >
+        <p
+            >
+            Going to the meal?
+            <br />
+            <input 
+                id="going_to_meal" 
+                type="radio" 
+                name="indicate_is_going" 
+                ng-model="going"
+                data-ng-value="true"
+                checked
+                >
+                Yes
+            <br />
+            <input 
+                id="going_to_meal" 
+                type="radio" 
+                name="indicate_is_going" 
+                ng-model="going"
+                data-ng-value="false"
+                >
+                No
+        </p>
+        <p
+            ng-repeat="component in components"
+            ng-show="going"
+            ng-click="set_selected_component(component.id)"
+            ng-class="{ 'will_indicate_on': is_component_selected(component.id), 'will_not_indicate_on': !is_component_selected(component.id), }"
+            >
+            {{ component.name }}
+        </p>
+        <input 
+            class="submit_indication_meal" 
+            type="submit" 
+            value="Submit"
+            >
+    </form>
+</div>

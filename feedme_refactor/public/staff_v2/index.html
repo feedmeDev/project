@@ -124,17 +124,13 @@ function addComponentFormClick() {
 	
 					<!--page controller
 						controls what page is on the screen-->
-					<header ng-controller="CTRLPageController as page_control" ng-show="login_control.isLoggedIn()">
+					<div ng-controller="CTRLPageController as page_control" ng-show="login_control.isLoggedIn()">
 					
-						<div class="menuTop">
-							<div class="headerImage">
-								<a href="#">
-									<img src="images/logo.png">
-								</a>
-							</div>
+						<header class="menuTop">
 							<div id="box2">
 								<ul id="menu2">
-		
+									<li class="headerImage"><a href="#"><img src="images/logo.png"></a></li>
+
 									<li><a href="#customers">Customers</a></li>
 									<li><a href="#staff">Staff</a></li>
 									<li><a href="#report">Reports</a></li>

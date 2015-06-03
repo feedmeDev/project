@@ -1,0 +1,34 @@
+<!-- user name and log out button -->
+<header>
+	<div>
+		<p> {{ user.name }}</p>
+	</div>
+	<div>
+		<p
+			ng-click="logout()"
+			>
+			Log out
+		</p>
+	</div>
+</header>
+
+<!-- list of meals
+	opens a new div from which the person can indicate -->
+<div
+	ng-repeat="meal in meals"
+	ng-show="meals_present()"
+	class="show_meal_div"
+	>
+	<p
+		ng-click="set_selected_meal(meal)"
+		class="meal_date_time"
+		>
+		{{ meal.date_and_time }}
+	</p>
+</div>
+
+<!-- a div that can be a popup or be positioned on the screen -->
+<div
+	ng-include="'pages/form.html'"
+	>
+</div>

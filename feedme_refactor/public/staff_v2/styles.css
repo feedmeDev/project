@@ -37,7 +37,7 @@ background-image: radial-gradient(circle farthest-corner at center, #0992C2 0%, 
 		width: 270px;
 		height: 60px;
 		float: left;
-
+		margin-bottom: 20px;
 }
 
 .menuTop li {
