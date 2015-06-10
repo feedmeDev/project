@@ -1,0 +1,18 @@
+<div class="viewContainer">
+<table class="tableView">
+    <tr>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Edit?</th>
+    </tr>
+    <tr
+        ng-repeat="staffMember in staff"
+        >
+        <td>{{staffMember.name}}</td>
+        <td>{{staffMember.username}}</td>
+        <td><img src="images/update.png" class="buttonHover" ng-click="set_edit_staff(staffMember)" /></td>
+    </tr>
+</div>
+
+
+

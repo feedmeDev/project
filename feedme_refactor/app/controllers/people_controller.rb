@@ -1,5 +1,6 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
+  before_action :is_staff
 
   # GET /people
   # GET /people.json
@@ -54,7 +55,14 @@ class PeopleController < ApplicationController
   # PATCH/PUT /people/1
   # PATCH/PUT /people/1.json
   def update
-    respond_to do |format|
+
+=begin
+	@person = Person.find(params[:id])
+	@person.update_attributes(person_params)
+	render json: @person
+=end
+    
+	respond_to do |format|
       if @person.update(person_params)
         format.html { redirect_to @person, notice: 'Person was successfully updated.' }
         format.json { head :no_content }

@@ -1,0 +1,38 @@
+<div
+	id="simple_report_data"
+	ng-show="is_selected_meal()"
+	>
+	<table
+		id="simple_report_table"
+		>
+		<caption>Report</caption>
+		<tr
+			id="n_people_indicated"
+			>
+			<td>Number Of People that have indicated:</td>
+			<td> {{ current_report.indicated }} </td>
+		</tr>
+		<tr
+			id="n_people_going"
+			>
+			<td>Number of people that are going:</td>
+			<td> {{ current_report.going }} </td>
+		</tr>
+	</table>
+	<table
+		id="report_components_table"
+		>
+		<th class="tbl_component_title">Components</th>
+		<tr
+			ng-repeat="component_report in current_report.summary"
+			class="report_data"
+			>
+			<td>
+				{{ component_report.component_request_count.component.name }}
+			</td>
+			<td>
+				{{ component_report.component_request_count.count }}
+			</td>
+		</tr>
+	</table>
+</div>

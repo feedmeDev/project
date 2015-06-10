@@ -1,0 +1,78 @@
+<form name="editCustomerForm" id="editCustomerForm" ng-show="is_selected_edit_customer()">
+
+	<div
+		id="editFormHeader"
+		>
+		<img
+			src="images/close.png"
+			ng-click="reset_edit_customer()" />
+		<h2 
+			class="editFormHeaderText"
+			>
+			Edit Customer
+		</h2>
+		<p
+			class="formInstructions"
+			>
+			Please enter the customer details in the fields below
+		</p>
+	</div>
+	<div
+		id="formContentContainer"
+		>
+		<p
+			class="formFieldName"
+			>
+			Desired Name:
+		</p>
+		<input
+			class="formDetails"
+			type="text"
+			placeholder="Name"
+			ng-model="cur_selected_edit_customer.name"
+			required
+			/>
+		<br />
+		<p
+			class="formFieldName"
+			>
+			Desired Username:
+		</p>
+		<input
+			class="formDetails"
+			type="text"
+			placeholder="Username"
+			ng-model="cur_selected_edit_customer.username"
+			required 
+			/>
+		<p
+			class="formFieldName"
+			>
+			Desired Password:
+		</p>	
+		<input
+			class="formDetails"
+			type="password"
+			placeholder="Password"
+			ng-model="cur_selected_edit_customer.password"
+			required
+			/>
+		<p
+			class="formFieldName"
+			>
+			Confirm Password:
+			</p>
+		<input
+			class="formDetails"
+			type="password"
+			placeholder="Password Confirmation"
+			ng-model="cur_selected_edit_customer.password_confirmation"
+			required
+			/>
+		<input
+			type="submit"
+			ng-click="edit_customer(cur_selected_edit_customer)"
+			value="edit"
+			/>
+	</div>
+</form>

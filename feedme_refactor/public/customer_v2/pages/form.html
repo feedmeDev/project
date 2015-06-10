@@ -5,27 +5,31 @@
     <p
         class="meal_date_time"
         >
-        {{ selected_meal.date_and_time }}
+        Event date: {{ convertMealDateTime(selected_meal.date_and_time) }}
     </p>
     <p
         class="meal_deadline"
         >
-        {{ selected_meal.deadline }}
+        Deadline: {{ convertMealDateTime(selected_meal.deadline) }}
     </p>
+	<!--
     <img
         src="images/close.png"
         alt="close"
         ng-click="reset_selected_meal()"
         />
+
+	-->
     <form
         ng-init="going = true"
         ng-submit="indicate(selected_meal.id, going)"
         >
         <p
             >
-            Going to the meal?
+            Will you be attending this event?
             <br />
-            <input 
+            <input
+				class="radioButton" 
                 id="going_to_meal" 
                 type="radio" 
                 name="indicate_is_going" 
@@ -36,6 +40,7 @@
                 Yes
             <br />
             <input 
+				class="radioButton"
                 id="going_to_meal" 
                 type="radio" 
                 name="indicate_is_going" 
@@ -44,6 +49,8 @@
                 >
                 No
         </p>
+	
+		Please select a single meal from the meals available:
         <p
             ng-repeat="component in components"
             ng-show="going"
@@ -52,10 +59,17 @@
             >
             {{ component.name }}
         </p>
+
+		<div id="buttonContainer">
         <input 
             class="submit_indication_meal" 
             type="submit" 
             value="Submit"
             >
+		</div>
+
     </form>
+	<div>
+	<button class="closeButton" ng-click="reset_selected_meal()">Cancel</button>
+	</div>
 </div>

@@ -228,7 +228,30 @@ make the following methods
 		$scope.user = $cookieStore.get('loggedInUser');
 		
 		$scope.selected_meal = "";
-		
+			
+		        $scope.convertMealDateTime = function(unformatted_date_in) {
+            //get sub string
+            var substring_date = unformatted_date_in.substr(0, 10);
+
+            //reverse and join
+            var reversed_date = substring_date.split("-").reverse().join();
+
+            var date_str = reversed_date.replace(/,/g, "/");
+
+            //get time substring
+            var substring_time = unformatted_date_in.substr(12, 17);
+
+            var ret = date_str + " " + substring_time;
+			
+			//shorten string
+			var ret = ret.substr(0, 15);
+
+            //return
+            return ret;
+        }
+
+
+
 		//set the selected meal
 		$scope.set_selected_meal = function (meal) {
 			//set the selected meal id

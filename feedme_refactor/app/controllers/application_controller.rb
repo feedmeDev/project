@@ -16,4 +16,10 @@ class ApplicationController < ActionController::Base
   def json_request?
     request.format.json?
   end
+
+  def is_staff
+	unless session[:staff]
+	  render :text => "not authorised", :status => 401
+	end
+  end
 end

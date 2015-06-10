@@ -1,0 +1,73 @@
+<div class="viewContainer">
+
+<div>
+<table class="tableView">
+	<tr>
+   		<th>
+				Name
+		</th>
+	    <th>
+				Update
+		</th>
+	</tr>
+</table>
+</div>
+<div
+	ng-repeat="component in components"
+	>
+<table
+	class="tableView"
+	>
+	<tr
+		class="component_name"
+		>
+		<td>
+			{{component.name}}
+		</td>
+		<td
+			class="component_updates"
+			>
+			<img
+				src="images/update.png"
+				class="buttonHover"
+				ng-click="set_focus_edit(component)" />
+		</td>
+	</tr>
+	<tr
+		class="component_name"
+		ng-show="get_show_edit(component.id)"
+		>
+		<td>
+			<p>Name:</p>
+		</td>
+		<td>
+			<input 
+				id={{ "component" + component.id + "name" }}
+				type="text"
+				ng-model="component.name" 
+				required 
+				/>
+		</td>
+	</tr>
+	<tr
+        class="component_name"
+        ng-show="get_show_edit(component.id)"
+        >
+        <td>
+            <p>Description:</p>
+        </td>
+        <td>
+            <input 
+                id={{ "component" + component.id + "description" }}
+                type="text"
+                ng-model="component.description" 
+                required 
+                />
+        </td>
+    </tr>
+	<tr ng-show="get_show_edit(component.id)">
+		<td><input id="submit" type="submit" value="Save Changes" ng-click="edit_component(component); get_all_components()" /></td>
+	</tr>
+</table>
+</div>
+</div>

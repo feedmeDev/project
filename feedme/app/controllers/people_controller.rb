@@ -53,9 +53,9 @@ end
   # GET /students.json
   def index_students
 
-    @students = Person.where(staff: false)
+    @students = Person.where(staff: false).to_a
 
-    render json: @students
+    render json: {:students => @students}
 
   end
 

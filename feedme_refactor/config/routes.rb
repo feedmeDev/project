@@ -69,6 +69,8 @@ Rails.application.routes.draw do
   get '/attendances/person' => 'attendances#get_attendances_for_person'
   #get report
   get '/report' => 'attendances#report'
+  #get detailed report
+  get '/detailed_report' => 'attendances#detailed_report'
   #create attendances
   post '/attendances' => 'attendances#create'
   #get indications for a person on a meal

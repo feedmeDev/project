@@ -1,0 +1,12 @@
+<div
+	id="detailed_report"
+	ng-show="is_selected_meal()"
+	>
+	{{ current_detailed_report }}
+	<div
+		class="detailed_report_person"
+		ng-repeat="person in current_detailed_report"
+		>
+		{{ person }}
+	</div>
+</div>

@@ -1,5 +1,7 @@
 class AttendancesController < ApplicationController
   before_action :set_attendance, only: [:show, :edit, :update, :destroy]
+  before_action :is_staff, except: [:create]
+
 
   # GET /attendances/person
   # GET /attendances/person.json
@@ -49,6 +51,33 @@ class AttendancesController < ApplicationController
     render json: {:report =>{:indicated => @indicated, :going => @going, :summary => @summary}}
   end
 
+  def detailed_report
+	meal = Meal.find(params[:id])
+
+    attendances = Attendance.where(['meal_id = ?', meal])
+
+	@report = []
+
+	attendances.each do | a |
+	  #foreach attendance get the person
+	  person = Person.where(['person_id = ?', a.person])
+
+	  #give them an empty array of components
+	  person.components = []
+
+	  #get the indications for the attendance for the meal
+	  indications = a.indications.to_a
+
+	  #add each of them to the persons components list
+	  indications.each do | i |
+		person.components << i.components
+	  end
+	  @report << person
+
+	end
+
+	render json: {:report => @report}
+  end
 
   # POST /attendances
   # POST /attendances.json

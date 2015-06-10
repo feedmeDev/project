@@ -1,0 +1,78 @@
+<form name="editStaffForm" id="editStaffForm" ng-show="is_selected_edit_staff()">
+
+	<div
+		id="editFormHeader"
+		>
+		<img
+			src="images/close.png"
+			ng-click="reset_edit_staff()" />
+		<h2 
+			class="editFormHeaderText"
+			>
+			Edit Staff
+		</h2>
+		<p
+			class="formInstructions"
+			>
+			Please enter the staff details in the fields below
+		</p>
+	</div>
+	<div
+		id="formContentContainer"
+		>
+		<p
+			class="formFieldName"
+			>
+			Desired Name:
+		</p>
+		<input
+			class="formDetails"
+			type="text"
+			placeholder="Name"
+			ng-model="cur_selected_edit_staff.name"
+			required
+			/>
+		<br />
+		<p
+			class="formFieldName"
+			>
+			Desired Username:
+		</p>
+		<input
+			class="formDetails"
+			type="text"
+			placeholder="Username"
+			ng-model="cur_selected_edit_staff.username"
+			required 
+			/>
+		<p
+			class="formFieldName"
+			>
+			Desired Password:
+		</p>	
+		<input
+			class="formDetails"
+			type="password"
+			placeholder="Password"
+			ng-model="cur_selected_edit_staff.password"
+			required
+			/>
+		<p
+			class="formFieldName"
+			>
+			Confirm Password:
+			</p>
+		<input
+			class="formDetails"
+			type="password"
+			placeholder="Password Confirmation"
+			ng-model="cur_selected_edit_staff.password_confirmation"
+			required
+			/>
+		<input
+			type="submit"
+			ng-click="edit_staff(cur_selected_edit_staff)"
+			value="edit"
+			/>
+	</div>
+</form>

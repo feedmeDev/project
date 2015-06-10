@@ -1,0 +1,35 @@
+<h2>Add Component</h2>
+
+<form name="addComponentForm" id="addComponentForm">
+<div id="addForm">
+
+<div id="addFormHeader">
+	<h2 class="addFormHeaderText">Add Component</h2>
+	<p class="formInstructions">Please enter the component details in the fields below</p>
+</div>
+
+<div id="formContentContainer">
+
+	<p class="formFieldName">Desired Name:</p>
+	<input class="formDetails" type="text" placeholder="Name" ng-model="component_to_add.name" required />
+	<br />
+	<span ng-bind="name">
+</span>
+	<p class="formFieldName">Desired Description:</p>
+	<textarea id="textArea" placeholder="Description" ng-model="component_to_add.description" required></textarea>
+
+</div>
+
+<div id="addFormFooter">
+
+
+	<button type="button" class="formConfirmButton close" ng-click="add_component(component_to_add); component_to_add = {}">Confirm</button>
+
+	<button id="closeFormButton" class="formCancelButton close">Cancel</button>
+
+
+
+</div>
+</div>
+</form>
+

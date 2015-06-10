@@ -1,5 +1,6 @@
 class MealsController < ApplicationController
   before_action :set_meal, only: [:show, :edit, :update, :destroy]
+  before_action :is_staff, except: [:get_future_meals, :get_components_for_meal]
 
   # GET /meals
   # GET /meals.json
@@ -30,7 +31,7 @@ class MealsController < ApplicationController
   def get_past_meals
 
 
-    @past_meals = Meal.order(date_and_time: :asc).where('date_and_time < ?', DateTime.now).to_a
+    @past_meals = Meal.order(date_and_time: :asc).where('date_and_time <= ?', DateTime.now).to_a
 
     render json: @past_meals
 
@@ -144,7 +145,7 @@ end
 
   # GET /meal/past_deadline
   def get_meals_past_deadline
-    @meals = Meal.order(date_and_time: :desc).where('deadline < ?', DateTime.now).to_a
+    @meals = Meal.order(date_and_time: :desc).where('deadline <= ?', DateTime.now).to_a
 
     render json: {:meals => @meals}
   end

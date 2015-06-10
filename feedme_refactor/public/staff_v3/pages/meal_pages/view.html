@@ -1,0 +1,20 @@
+<div class="viewContainer">
+<table class="tableView">
+	<tr>
+		<th>Deadline</th>
+	</tr>
+</table>
+	
+	<div class="customer_for_edit" ng-repeat="meal in get_meals()">
+		<table class="tableView">
+			<tr>
+				<td>
+    				<p class="meal_deadline">{{ convertMealDate(meal.deadline) }}</p>
+				</td>
+			</tr>
+		</table>	
+	</div>
+</div>
+
+
+

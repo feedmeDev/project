@@ -1,5 +1,6 @@
 class ComponentsController < ApplicationController
   before_action :set_component, only: [:show, :edit, :update, :destroy]
+  before_action :is_staff
 
   # GET /components
   # GET /components.json

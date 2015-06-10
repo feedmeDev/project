@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="feedme-web">
+	<head>
+		<title>Feedme</title>
+		
+		<!-- Stylesheets go here -->
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+		<link rel="stylesheet" type="text/css" href="css/datetimepicker.css" />
+
+        <!-- jQuery goes here -->
+		<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+		
+		<!-- jQuery-ui Animations -->
+		<script type="text/javascript" src="javascript/jquery-ui.js"></script>
+
+
+       <!-- datetimepicker -->
+        <script type="text/javascript" src="javascript/jquery.datetimepicker.js"></script>
+
+
+
+		<!-- Angular gets called after jQuery -->
+		<script src="angular.min.js"></script>
+		<script src="//code.angularjs.org/1.2.22/angular-cookies.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+        <script src="angular-resource.js"></script>
+
+        <script src="app.js"></script>
+
+
+<script type="text/javascript">
+
+
+function addCustomerFormClick() {
+
+
+	$("#addCustomerForm").lightbox_me({
+		centered:true,
+
+		onClose: function() {
+		}
+	});
+
+}
+
+function addStaffFormClick() {
+
+
+    $("#addStaffForm").lightbox_me({
+        centered:true,
+
+        onClose: function() {
+        }
+    });
+
+}
+
+function addComponentFormClick() {
+
+
+    $("#addComponentForm").lightbox_me({
+        centered:true,
+
+        onClose: function() {
+        }
+    });
+}
+</script>
+	</head>
+	<body>
+		<div class="backDrop">
+			<div>
+				<div ng-view> 
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<!-- Menu Slide -->
+	<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.4/TweenMax.min.js'></script>
+	<script type="text/javascript" src="javascript/menu-slide.js"></script>
+
+	<!-- Popup forms-->	
+	<script type="text/javascript" src="javascript/jquery.lightbox_me.js"></script>
+</html>
