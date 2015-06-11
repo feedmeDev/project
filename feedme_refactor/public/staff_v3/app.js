@@ -58,7 +58,7 @@
 					//the request with method, url, content-type, and data needed for a login
 					var req =  {
 						method: 'POST', 
-						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/meal.json',
+						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/meal.json',
 						headers: {
 							'Content-Type': 'application/json'
 						},
@@ -86,7 +86,7 @@
 					//the request with method, url, content-type, and data needed for a login
 					var req =  {
 						method: 'GET',
-						url:'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/meals.json',
+						url:'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/meals.json',
 						headers: {
 							'Content-Type': 'application/json'
 						},
@@ -110,7 +110,7 @@
                     //the request with method, url, content-type, and data needed for a login
                     var req =  {
                         method: 'GET',
-                        url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/meals/past.json',
+                        url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/meals/past.json',
                         headers: {
                             'Content-Type': 'application/json'
                         },
@@ -135,7 +135,7 @@
                     //the request with method, url, content-type, and data needed for a login
                     var req =  {
                         method: 'GET',
-                        url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/meals/future.json',
+                        url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/meals/future.json',
                         headers: {
                             'Content-Type': 'application/json'
                         },
@@ -167,7 +167,7 @@
 
 					var req = {
 						method: 'GET',
-						url:'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/customers.json',
+						url:'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/customers.json',
 						headers: {
 							'Content-Type': 'application/json'
 						},
@@ -190,7 +190,7 @@
 
                     var req = {
                         method: 'GET',
-                        url:'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/staff.json',
+                        url:'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/staff.json',
                         headers: {
                             'Content-Type': 'application/json'
                         },
@@ -215,7 +215,7 @@
 				//the request with method, url, content-type, and data needed for a login
                     var req =  {
                         method: 'POST',
-                        url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/person.json',
+                        url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/person.json',
                         headers: {
                             'Content-Type': 'application/json'
                         },
@@ -245,7 +245,7 @@
                 //the request with method, url, content-type, and data needed for a login
                     var req =  {
                         method: 'POST',
-                        url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/person.json',
+                        url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/person.json',
                         headers: {
                             'Content-Type': 'application/json'
                         },
@@ -277,7 +277,7 @@
                     //the request with method, url, content-type, and data needed for a login
                     var req =  {
                         method: 'PUT',
-                        url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/person.json',
+                        url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/person.json',
                         headers: {
                             'Content-Type': 'application/json'
                         },
@@ -317,7 +317,7 @@
 					//the request with method, url, content-type, and data needed for a login
 					var req =  {
 						method: 'GET', 
-						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/report.json',
+						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/report.json',
 						headers: {
 							'Content-Type': 'application/json'
 						},
@@ -343,7 +343,7 @@
                     //the request with method, url, content-type, and data needed for a login
                     var req =  {
                         method: 'GET',
-                        url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/detailed_report.json',
+                        url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/detailed_report.json',
                         headers: {
                             'Content-Type': 'application/json'
                         },
@@ -377,7 +377,7 @@
 					//the request with method, url, content-type, and data needed for a login
 					var req =  {
 						method: 'POST', 
-						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/login/staff.json',
+						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/login/staff.json',
 						headers: {
 							'Content-Type': 'application/json'
 						},
@@ -402,7 +402,7 @@
 				function () {
 					var req = {
 						method: 'POST',
-						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/logout.json',
+						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/logout.json',
 						headers: {
                             'Content-Type': 'application/json'
                         },
@@ -441,7 +441,7 @@
 					//the request with method, url, content-type, and data needed for a login
 					var req =  {
 						method: 'POST', 
-						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/attendances.json',
+						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/attendances.json',
 						headers: {
 							'Content-Type': 'application/json'
 						},
@@ -476,7 +476,7 @@
 					//the request with method, url, content-type, and data needed for a login
 					var req =  {
 						method: 'GET', 
-						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/meal/components.json',
+						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/meal/components.json',
 						headers: {
 							'Content-Type': 'application/json'
 						},
@@ -503,7 +503,7 @@
 					//the request with method, url, content-type, and data needed for a login
 					var req =  {
 						method: 'GET', 
-						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/components.json',
+						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/components.json',
 						headers: {
 							'Content-Type': 'application/json'
 						},
@@ -527,7 +527,7 @@
                     //the request with method, url, content-type, and data needed for a login
                     var req =  {
                         method: 'PUT',
-                        url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/component.json',
+                        url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/component.json',
                         headers: {
                             'Content-Type': 'application/json'
                         },
@@ -555,7 +555,7 @@
                     //the request with method, url, content-type, and data needed for a login
                     var req =  {
                         method: 'POST',
-                        url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/component.json',
+                        url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/component.json',
                         headers: {
                             'Content-Type': 'application/json'
                         },
@@ -1131,7 +1131,7 @@
 
 		//get meals
 		$scope.get_meals_from_server = function () {
-			Meal.past().then(
+			Meal.all().then(
 				function (promise) {
 					$scope.meals = promise.data;
 					//alert($scope.meals);

@@ -54,28 +54,24 @@ class AttendancesController < ApplicationController
   def detailed_report
 	meal = Meal.find(params[:id])
 
-    attendances = Attendance.where(['meal_id = ?', meal])
+    attendances = Attendance.where(['meal_id = ?', meal]).to_a
 
 	@report = []
 
 	attendances.each do | a |
-	  #foreach attendance get the person
-	  person = Person.where(['person_id = ?', a.person])
+      #get the person
+	  person = Person.find(a.person_id)
 
-	  #give them an empty array of components
-	  person.components = []
-
-	  #get the indications for the attendance for the meal
-	  indications = a.indications.to_a
-
-	  #add each of them to the persons components list
-	  indications.each do | i |
-		person.components << i.components
+	  components = []
+	  #foreach component they ahve indicated on add it to the list
+	  a.indications.each do | i |
+		component = Component.find(i.component_id)
+		components << component
 	  end
-	  @report << person
-
+	  
+	  @report << {:person => {:name => person.username, :username => person.username}, :components => components}
 	end
-
+	
 	render json: {:report => @report}
   end
 

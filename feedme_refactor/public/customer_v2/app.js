@@ -28,7 +28,7 @@
 					//the request with method, url, content-type, and data needed for a login
 					var req =  {
 						method: 'POST', 
-						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/login/customer.json',
+						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/login/customer.json',
 						headers: {
 							'Content-Type': 'application/json'
 						},
@@ -54,7 +54,7 @@
                 function () {
                     var req = {
                         method: 'POST',
-                        url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/logout.json',
+                        url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/logout.json',
                         headers: {
                             'Content-Type': 'application/json'
                         },
@@ -84,7 +84,7 @@
 					//the request with method, url, content-type, and data needed for a login
 					var req =  {
 						method: 'POST', 
-						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/attendances.json',
+						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/attendances.json',
 						headers: {
 							'Content-Type': 'application/json'
 						},
@@ -118,7 +118,7 @@
 					//the request with method, url, content-type, and data needed for a login
 					var req =  {
 						method: 'GET', 
-						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/meals/future.json',
+						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/meals/future.json',
 						headers: {
 							'Content-Type': 'application/json'
 						},
@@ -149,7 +149,7 @@
 					//the request with method, url, content-type, and data needed for a login
 					var req =  {
 						method: 'GET', 
-						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com:3000/meals/components.json',
+						url: 'http://ec2-54-153-163-189.ap-southeast-2.compute.amazonaws.com/meals/components.json',
 						headers: {
 							'Content-Type': 'application/json'
 						},
