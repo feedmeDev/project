@@ -939,6 +939,7 @@
 		//sub page views
         $scope.tab = 0;
 		
+		$scope.mealTypes = "";
 
 		$scope.convertMealDate = function(unformatted_date_in) {
 			//get sub string
@@ -1048,7 +1049,8 @@
 
 
 		$scope.get_all = function () {
-			
+	        $scope.mealTypes = "All Meals";
+
 			$scope.meals = [];
 			
 			//get all the meals
@@ -1062,6 +1064,7 @@
 		};
 
 		$scope.get_future = function () {
+	        $scope.mealTypes = "Future Meals";
 
             $scope.meals = [];
 
@@ -1077,6 +1080,7 @@
 		};
 
 		$scope.get_past = function () {
+	        $scope.mealTypes = "Past Meals";
 
             $scope.meals = [];
 

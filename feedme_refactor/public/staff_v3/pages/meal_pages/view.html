@@ -1,7 +1,16 @@
 <div class="viewContainer">
 <table class="tableView">
+	<caption> {{ mealTypes }} </caption>
 	<tr>
 		<th>Deadline</th>
+		<th>Date of meal</th>
+	</tr>
+	<tr
+		ng-repeat="meal in meals"
+		>
+		<td><p>{{ convertMealDate(meal.deadline) }}</p></td>
+        <td><p>{{ convertMealDate(meal.date_and_time) }}</p></td>
+        <td><p>View Components</p></td>
 	</tr>
 </table>
 	
