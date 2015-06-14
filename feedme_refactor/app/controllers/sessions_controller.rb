@@ -6,7 +6,7 @@ skip_before_action :require_login
   
     if(@person != false && @person != nil)
       session[:user_id] = @person.id
-      session[:staff] = true
+      session[:staff] = @person.staff
       render json: @person
     else
       render :text => "not_found", :status => 401
@@ -23,7 +23,7 @@ skip_before_action :require_login
 
     if(@person != false && @person != nil)
       session[:user_id] = @person.id
-      session[:staff] = false
+      session[:staff] = @person.staff
       render json: @person
     else
       render :text => "not_found", :status => 401

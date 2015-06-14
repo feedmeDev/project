@@ -79,23 +79,27 @@ class AttendancesController < ApplicationController
   # POST /attendances.json
   def create
 
+
+    @attendance = Attendance.new(attendance_params)
+
+    list_components = params[:list]
+    if ((list_components != nil && !list_components.empty?) || !@attendance.going) 
     #delete the old attendance if it exists
 
     person = Person.find(params[:person_id])
     meal = Meal.find(params[:meal_id])
 
-    @attendance = Attendance.where(['meal_id = ? and person_id = ?', meal, person]).first
+    @attendancer = Attendance.where(['meal_id = ? and person_id = ?', meal, person]).first
     
     #delete the previous components the person has indicated on
     
-    if @attendance.present?
-      @attendance.components.destroy_all
-      @attendance.delete
+    if @attendancer.present?
+      @attendancer.components.destroy_all
+      @attendancer.delete
     end 
     
     # create the new attendance
 
-    @attendance = Attendance.new(attendance_params)
 
       if @attendance.save
 		render json: @attendance
@@ -106,9 +110,8 @@ class AttendancesController < ApplicationController
 
     #indicate yes on the list of components
 
-    list_components = params[:list]
 
-    if @attendance.going && list_components != nil
+    if @attendance.going
 
       list_components.each do | lc |
 
@@ -119,6 +122,9 @@ class AttendancesController < ApplicationController
 
       end
     end
+	else
+	  render :text => "need a minimun of one component", :status => 400
+	end
   end
   
   # GET /indications
