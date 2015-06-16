@@ -49,6 +49,11 @@ class MealsController < ApplicationController
   # POST /meals
   # POST /meals.json
   def create
+	
+	#possibly put components addition here
+    @list_components = Component.find(params[:component_list])
+	if !@list_components.empty?
+	
     @meal = Meal.new(meal_params)
 
     respond_to do |format|
@@ -63,12 +68,10 @@ class MealsController < ApplicationController
 
 	@new_meal = Meal.find(@meal.id)
 
-	#possibly put components addition here
-    @list_components = Component.find(params[:component_list])
-
     @list_components.each do | lc |
       @new_meal.components << lc
     end
+	end
   end
   
   # PATCH/PUT /meals
