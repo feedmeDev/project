@@ -43,6 +43,8 @@ Rails.application.routes.draw do
   get '/meals/past_deadline' => 'meals#get_meals_past_deadline'
   #get future meals
   get '/meals/future' => 'meals#get_future_meals'
+  #get meals the user can indicate on
+  get '/meals/indicate_on' => 'meals#get_future_meals_cust'
   #get past meals
   get '/meals/past' => 'meals#get_past_meals'
   #get all meals on date

@@ -1,6 +1,6 @@
 class MealsController < ApplicationController
   before_action :set_meal, only: [:show, :edit, :update, :destroy]
-  before_action :is_staff, except: [:get_future_meals, :get_components_for_meal]
+  before_action :is_staff, except: [:get_future_meals_cust, :get_components_for_meal]
 
   # GET /meals
   # GET /meals.json
@@ -26,6 +26,23 @@ class MealsController < ApplicationController
     render json: {:future => @future_meals, :number_of_meals_returned => number_meals_to_get}
 
   end
+
+  # GET /meals/future.json
+  def get_future_meals_cust
+
+    number_meals_to_get = 100
+
+    if params[:number_of_meals].present?
+      number_meals_to_get = params[:number_of_meals]
+    end
+
+    @future_meals = Meal.order(date_and_time: :asc).where('deadline > ?', DateTime.now).take(number_meals_to_get).to_a
+
+
+    render json: {:future => @future_meals, :number_of_meals_returned => number_meals_to_get}
+
+  end
+
 
   # GET /meals/past.json
   def get_past_meals

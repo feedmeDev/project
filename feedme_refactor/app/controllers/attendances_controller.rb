@@ -79,6 +79,8 @@ class AttendancesController < ApplicationController
   # POST /attendances.json
   def create
 
+    meal = Meal.find(params[:meal_id])
+	if(meal.deadline >= DateTime.now)
 
     @attendance = Attendance.new(attendance_params)
 
@@ -87,7 +89,6 @@ class AttendancesController < ApplicationController
     #delete the old attendance if it exists
 
     person = Person.find(params[:person_id])
-    meal = Meal.find(params[:meal_id])
 
     @attendancer = Attendance.where(['meal_id = ? and person_id = ?', meal, person]).first
     
@@ -125,6 +126,9 @@ class AttendancesController < ApplicationController
 	else
 	  render :text => "need a minimun of one component", :status => 400
 	end
+	else
+		render :text => "Meal deadline is already past", :status => 400
+    end
   end
   
   # GET /indications
