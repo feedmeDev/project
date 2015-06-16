@@ -1,6 +1,6 @@
 class MealsController < ApplicationController
   before_action :set_meal, only: [:show, :edit, :update, :destroy]
-  before_action :is_staff, except: [:get_future_meals_cust, :get_components_for_meal]
+  before_action :is_staff, except: [:get_future_meals_cust, :get_future_meals, :get_components_for_meal]
 
   # GET /meals
   # GET /meals.json
