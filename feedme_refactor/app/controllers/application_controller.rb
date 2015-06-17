@@ -22,4 +22,10 @@ class ApplicationController < ActionController::Base
 	  render :text => "not authorised", :status => 401
 	end
   end
+
+  def is_customer
+    if session[:staff]
+      render :text => "not authorised", :status => 401
+    end
+  end
 end

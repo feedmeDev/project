@@ -1,6 +1,7 @@
 class AttendancesController < ApplicationController
   before_action :set_attendance, only: [:show, :edit, :update, :destroy]
   before_action :is_staff, except: [:create]
+  before_action :is_customer, only: [:create]
 
 
   # GET /attendances/person
