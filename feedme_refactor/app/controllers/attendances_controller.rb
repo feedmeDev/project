@@ -66,12 +66,14 @@ class AttendancesController < ApplicationController
 	  components = []
 	  #foreach component they ahve indicated on add it to the list
 	  a.indications.each do | i |
-		component = Component.find(i.component_id)
-		components << component
-	  end
+		  component = Component.find(i.component_id)
+		  components << component
+		end
 	  
-	  @report << {:person => {:name => person.username, :username => person.username}, :components => components}
-	end
+	  if a.going == true
+	    @report << {:person => {:name => person.username, :username => person.username}, :components => components}
+	  end
+    end
 	
 	render json: {:report => @report}
   end

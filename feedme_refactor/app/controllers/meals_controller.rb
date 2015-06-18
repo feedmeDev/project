@@ -165,7 +165,7 @@ end
 
   # GET /meal/past_deadline
   def get_meals_past_deadline
-    @meals = Meal.order(date_and_time: :desc).where('deadline <= ?', DateTime.now).to_a
+    @meals = Meal.order(date_and_time: :desc).where('deadline >= ?', DateTime.now).to_a
 
     render json: {:meals => @meals}
   end
